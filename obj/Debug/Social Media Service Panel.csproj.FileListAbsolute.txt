@@ -1,0 +1,10 @@
+c:\users\www\documents\visual studio 2010\Projects\Social Media Service Panel\Social Media Service Panel\obj\Debug\ResolveAssemblyReference.cache
+c:\users\www\documents\visual studio 2010\Projects\Social Media Service Panel\Social Media Service Panel\bin\Social Media Service Panel.dll
+c:\users\www\documents\visual studio 2010\Projects\Social Media Service Panel\Social Media Service Panel\bin\Social Media Service Panel.pdb
+c:\users\www\documents\visual studio 2010\Projects\Social Media Service Panel\Social Media Service Panel\obj\Debug\Social Media Service Panel.dll
+c:\users\www\documents\visual studio 2010\Projects\Social Media Service Panel\Social Media Service Panel\obj\Debug\Social Media Service Panel.pdb
+C:\Users\www\Desktop\N\Social Media Service Panel\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\www\Desktop\N\Social Media Service Panel\obj\Debug\Social Media Service Panel.pdb
+C:\Users\www\Desktop\N\Social Media Service Panel\bin\Social Media Service Panel.dll
+C:\Users\www\Desktop\N\Social Media Service Panel\bin\Social Media Service Panel.pdb
+C:\Users\www\Desktop\N\Social Media Service Panel\obj\Debug\Social Media Service Panel.dll

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="C325018_IGPanel" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=mssql1003.ixwebhosting.com;Initial Catalog=C325018_IGPanel;Persist Security Info=True;User ID=C325018_IGPanel" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="C325018_IGPanelConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="C325018_IGPanel.tblOrder" Member="tblOrders">
+    <Type Name="tblOrder">
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Url" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartPoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EndPoint" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OrderStatus" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastUpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="C325018_IGPanel.tblAccesstoken" Member="tblAccesstokens">
+    <Type Name="tblAccesstoken">
+      <Column Name="UserID" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AccessToken" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DateTime" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
