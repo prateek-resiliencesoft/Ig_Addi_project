@@ -27,12 +27,6 @@ namespace SocialPanel.Admin
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            txtNewPassword.Text = string.Empty;
-            txtOldPassword.Text = string.Empty;
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
             try
             {
 
@@ -52,7 +46,13 @@ namespace SocialPanel.Admin
             catch (Exception ex)
             {
                 lblErrorMessage.Text = ex.Message;
-            }
+            } 
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            txtNewPassword.Text = string.Empty;
+            txtOldPassword.Text = string.Empty;
         }
     }
 }

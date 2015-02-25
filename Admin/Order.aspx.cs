@@ -24,11 +24,11 @@ namespace SocialPanel.Admin
                 {
                     if (!IsPostBack)
                     {
-                        //Order_Types.GetOrderTypes();
-                        //ddlOrderType.DataSource = Order_Types.OrderTypes;
-                        //ddlOrderType.DataTextField = "Value";
-                        //ddlOrderType.DataValueField = "Value";
-                        //ddlOrderType.DataBind();
+                        Order_Types.GetOrderTypes();
+                        ddlOrderType.DataSource = Order_Types.OrderTypes;
+                        ddlOrderType.DataTextField = "Value";
+                        ddlOrderType.DataValueField = "Value";
+                        ddlOrderType.DataBind();
 
                         Order_Types.GetStatusForAdmin();
                         ddlOrderStatus.DataSource = Order_Types.StatusForAdmin;
@@ -48,7 +48,7 @@ namespace SocialPanel.Admin
 
                             //ddlOrderType.ClearSelection();
                             ddlOrderStatus.ClearSelection();
-                            //this.ddlOrderType.Items.FindByText(order.OrderType).Selected = true;
+                            this.ddlOrderType.Items.FindByText(order.OrderType).Selected = true;
                             this.ddlOrderStatus.Items.FindByText(order.OrderStatus).Selected = true;
                         }
                     }
@@ -100,7 +100,7 @@ namespace SocialPanel.Admin
                             endpoint = startpoint + int.Parse(txtAmount.Text.Trim());
 
                             orderRepo.AddOrder(OrderNumber, url, int.Parse(txtAmount.Text.Trim()),
-                                                DateTime.Now, startpoint, endpoint, 0, ddlOrderStatus.SelectedItem.Value, DateTime.Now);
+                                                DateTime.Now, startpoint, endpoint, 0, ddlOrderStatus.SelectedItem.Value, DateTime.Now, ddlOrderStatus.SelectedItem.Value);
                             lblErrorMessage.Text = "Record successfully added";
                         }
                         catch (Exception ex)

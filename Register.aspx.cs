@@ -12,12 +12,12 @@ namespace SocialPanel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MembershipCreateStatus status;
+            //MembershipCreateStatus status;
 
 
-            Membership.CreateUser("testadmin", "admin1234", "testadmin@testadmin.com", "name", "testadmin", true, out status);
+            //Membership.CreateUser("newadmin", "123456", "newadmin@testadmin.com", "name", "admin", true, out status);
 
-            Roles.AddUserToRole("testadmin", "Admin");
+            //Roles.AddUserToRole("newadmin", "Admin");
 
             //Roles.CreateRole("Admin");
         }

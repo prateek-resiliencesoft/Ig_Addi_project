@@ -7,7 +7,7 @@
          var data = "";
          $.ajax({
              type: "POST",
-             url: "../JquerPost.aspx/GetNormalCompletedOrdersForAdmin",
+             url: "../JquerPost.aspx/GetCompletedFollowOrdersForAdmin",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (result) {
@@ -26,16 +26,12 @@
                 datatype: "json",
                 datafields: [
                     { name: 'OrderId', type: 'int' },
-                   // { name: 'ClientUserName', type: 'string' },
-                   // { name: 'OrderType', type: 'string' },
                     { name: 'Url', type: 'string' },
                     { name: 'Amount', type: 'int' },
                     { name: 'OrderDate', type: 'date' },
                     { name: 'StartPoint', type: 'int' },
                     { name: 'EndPoint', type: 'int' },
                    { name: 'OrderStatus', type: 'string' }
-                //                    { name: 'LastUpdateDate', type: 'date' },
-                   // {name: 'Paid', type: 'decimal' }
                 ],
                 localdata: data,
                 pagesize: 20,
@@ -107,7 +103,7 @@
                  //alert(dataAdapter);
                  $("#jqxgrid").jqxGrid(
             {
-                width: 1000,
+                width: 1020,
                 rowsheight: 30,
                 source: dataAdapter,
                 theme: theme,
@@ -162,17 +158,14 @@
                 //                },
                 columns: [
                     { text: 'Edit', datafield: 'Edit', width: 62, cellsrenderer: editOrder },
-                    { text: 'OrderId', datafield: 'OrderId', width: 60 },
-                   // { text: 'Client', datafield: 'ClientUserName', width: 110 },
-                   // { text: 'Order Type', datafield: 'OrderType', width: 180 },
-                    { text: 'Url', datafield: 'Url', width: 362, cellsrenderer: hrefUrl },
+                    { text: 'OrderId', datafield: 'OrderId', width: 100 },
+                    { text: 'Url', datafield: 'Url', width: 350, cellsrenderer: hrefUrl },
                     { text: 'Amount', datafield: 'Amount', width: 60, aggregates: ['sum'] },
                     { text: 'Order Date', datafield: 'OrderDate', width: 200, cellsformat: 'M/d/yyyy h:mm:ss tt' },
-                    { text: 'Start', datafield: 'StartPoint', width: 50 },
-                    { text: 'End', datafield: 'EndPoint', width: 50 },
-                    { text: 'Status', datafield: 'OrderStatus', width: 150, cellsrenderer: statusRender }
-                //                    { text: 'Last Update', datafield: 'LastUpdateDate', width: 90, cellsformat: 'd' },
-                   // {text: 'Price', datafield: 'Paid', width: 70 }
+                    { text: 'Start', datafield: 'StartPoint', width: 70 },
+                    { text: 'End', datafield: 'EndPoint', width: 70 },
+                    { text: 'Status', datafield: 'OrderStatus', width: 110, cellsrenderer: statusRender }
+
                 ]
             });
 

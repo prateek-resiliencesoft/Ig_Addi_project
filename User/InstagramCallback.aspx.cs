@@ -72,7 +72,7 @@ namespace SocialPanel.User
                             endpoint = startpoint + 10;
 
                             orderRepo.AddOrder(OrderNumber, url, 10,
-                                                DateTime.Now, startpoint, endpoint, 0, "Pending", DateTime.Now);
+                                                DateTime.Now, startpoint, endpoint, 0, "Pending", DateTime.Now, "Follow", objIGProfile.UserName);
 
                         }
                         catch (Exception ex)

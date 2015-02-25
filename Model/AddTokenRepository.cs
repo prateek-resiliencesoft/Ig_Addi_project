@@ -9,6 +9,11 @@ namespace SocialPanel.Model
     {
         DataClassesDataContext Dbcotext = new DataClassesDataContext();
 
+        public tblAccesstoken GetUser(string InstagramUser)
+        {
+            return Dbcotext.tblAccesstokens.First(A => A.UserName == InstagramUser);
+        }
+
         public void AddToken(string UserId, string Username, string AccessToken)
         {
             tblAccesstoken tokenusername = new tblAccesstoken();

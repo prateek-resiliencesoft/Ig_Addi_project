@@ -1,10 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true"
-    CodeBehind="Order.aspx.cs" Inherits="SocialPanel.Admin.Order" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Site.Master" AutoEventWireup="true" CodeBehind="AutoLikeOrder.aspx.cs" Inherits="SocialPanel.Admin.AutoLikeOrder" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="content" class="span10">
+<div id="content" class="span10">
         <!-- content starts -->
         <div>
             <ul class="breadcrumb">
@@ -47,7 +45,7 @@
                                 <label class="control-label" for="focusedInput">
                                     Url</label>
                                 <div class="controls">
-                                    <asp:TextBox ID="txtUrl" runat="server"  CssClass="input-xlarge focused" placeholder="Enter Url"></asp:TextBox>
+                                    <asp:TextBox ID="txtUrl" runat="server" TextMode="MultiLine" Height="200px" CssClass="input-xlarge focused" placeholder="Enter Url"></asp:TextBox>
                                     <span class="help-inline">
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUrl"
                                             ErrorMessage="Please Enter Url" Font-Bold="True" ForeColor="Red"></asp:RequiredFieldValidator></span>
@@ -57,7 +55,7 @@
                                 <label class="control-label" for="focusedInput">
                                     Amount</label>
                                 <div class="controls">
-                                    <asp:TextBox ID="txtAmount"  CssClass="input-xlarge focused" placeholder="Enter Amount"
+                                    <asp:TextBox ID="txtAmount" TextMode="Number" CssClass="input-xlarge focused" placeholder="Enter Amount"
                                         runat="server"></asp:TextBox>
                                     <span class="help-inline">
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtAmount"
@@ -81,14 +79,10 @@
                                 <asp:HiddenField ID="hfUser" runat="server" />
                             </div>
                             <div class="form-actions">
-                                <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Save" CssClass="btn btn-primary" />
-                                <asp:Button ID="btnReset" runat="server" CssClass="btn" OnClick="btnReset_Click"
-                                    Text="Reset" />
-
-                                    <asp:Button ID="Btndelete" runat="server" Text="Delete" 
-                                    CssClass="btn btn-primary" onclick="Btndelete_Click" />
-                                    <%--<asp:Button ID="Btndeleteall" runat="server" Text="DeleteAll" 
-                                    CssClass="btn btn-primary" onclick="Btndeleteall_Click" />--%>
+                                <asp:Button ID="btnSubmit" runat="server" Text="Save" 
+                                    CssClass="btn btn-primary" onclick="btnSubmit_Click" />
+                                <asp:Button ID="btnReset" runat="server" CssClass="btn"
+                                    Text="Reset" onclick="btnReset_Click" />
                             </div>
                         </fieldset>
                     </div>

@@ -15,6 +15,7 @@ namespace Social_Media_Service_Panel
         {
             try
             {
+
                 if (HttpContext.Current.User != null)
                 {
                     if (HttpContext.Current.User.Identity.IsAuthenticated)
@@ -44,7 +45,8 @@ namespace Social_Media_Service_Panel
 
                 if (IsExistUser)
                 {
-                    if (Roles.IsUserInRole(txtUserName.Text.Trim(),"Admin"))
+                    bool IsinRole = Roles.IsUserInRole(txtUserName.Text.Trim(),"Admin");
+                    if (IsinRole)
                     {
                         FormsAuthentication.SetAuthCookie(txtUserName.Text.Trim(), false);   
                         Response.Redirect("~/Admin/Home.aspx");

@@ -48,10 +48,13 @@ namespace SocialPanel.Model
         {
             try
             {
-                OrderTypes.Add(1, "Extreme Instagram Followers");
-                OrderTypes.Add(2, "Extreme Instagram Likes");
-                OrderTypes.Add(3, "Regular Instagram Followers");
-                OrderTypes.Add(4, "Regular Instagram Likes");
+                //OrderTypes.Add(1, "Extreme Instagram Followers");
+                //OrderTypes.Add(2, "Extreme Instagram Likes");
+                //OrderTypes.Add(3, "Regular Instagram Followers");
+                //OrderTypes.Add(4, "Regular Instagram Likes");
+
+                OrderTypes.Add(1, "Follow");
+                OrderTypes.Add(2, "Like");
             }
             catch (Exception ex)
             {

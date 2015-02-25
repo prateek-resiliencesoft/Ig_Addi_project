@@ -25,7 +25,7 @@ namespace SocialPanel
                 {
                     var Details = Membership.GetUser(txtUserName.Text.Trim());
                     string Email = Details.Email;
-                    string Password = Membership.Provider.ResetPassword(txtUserName.Text.Trim(), "answer");
+                    string Password = Membership.Provider.ResetPassword(txtUserName.Text.Trim(), "admin");
                     if (Password != string.Empty)
                     {
                         MailFormats mf = new MailFormats();

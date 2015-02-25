@@ -23,36 +23,82 @@ namespace Social_Media_Service_Panel
         }
 
         [WebMethod]
-        public static object GetNormalCompletedOrdersForAdmin()
+        public static object GetCompletedLikeOrdersForAdmin()
         {
             OrderRepository orderRepo = new OrderRepository();
-            var tblOrderDetails = orderRepo.GetCompletedOrders();
+            var tblOrderDetails = orderRepo.GetCompletedOrders("Like");
+            return tblOrderDetails;
+        }
+        [WebMethod]
+        public static object GetNonCompletedLikeOrdersForAdmin()
+        {
+            OrderRepository orderRepo = new OrderRepository();
+            var tblOrderDetails = orderRepo.GetNonCompletedOrders("Like");
+            return tblOrderDetails;
+        }
+
+       
+
+        [WebMethod]
+        public static object GetCompletedFollowOrdersForAdmin()
+        {
+            OrderRepository orderRepo = new OrderRepository();
+            var tblOrderDetails = orderRepo.GetCompletedOrders("Follow");
             return tblOrderDetails;
         }
 
         [WebMethod]
-        public static object GetNormalNonCompletedOrdersForAdmin()
+        public static object GetNonCompletedFollowOrdersForAdmin()
         {
             OrderRepository orderRepo = new OrderRepository();
-            var tblOrderDetails = orderRepo.GetNonCompletedOrders();
+            var tblOrderDetails = orderRepo.GetNonCompletedOrders("Follow");
             return tblOrderDetails;
         }
 
-        //[WebMethod]
-        //public static object GetAutoLikeCompletedOrdersForAdmin()
+       
+
+        public IQueryable<tblOrder> GetCompletedOrders()
+        {
+            DataClassesDataContext DbContext = new DataClassesDataContext();
+            var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus == "Completed");
+            return tblOrderDetails.OrderByDescending(O => O.OrderId);
+        }
+
+        //public IQueryable<tblOrder> GetCompletedOrders(string FeatureType)
         //{
-        //    OrderRepository orderRepo = new OrderRepository();
-        //    var tblOrderDetails = orderRepo.GetCompletedOrders("AutoLike");
-        //    return tblOrderDetails;
+        //    DataClassesDataContext DbContext = new DataClassesDataContext();
+        //    var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus == "Completed" && O.FeatureType == FeatureType);
+        //    return tblOrderDetails.OrderByDescending(O => O.OrderId);
+        //}
+        //public IQueryable<tblOrder> GetNonCompletedOrders(string FeatureType)
+        //{
+        //    DataClassesDataContext DbContext = new DataClassesDataContext();
+        //    var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus != "Completed" && O.FeatureType == FeatureType);
+        //    return tblOrderDetails.OrderByDescending(O => O.OrderId);
         //}
 
-        //[WebMethod]
-        //public static object GetAutoLikeNonCompletedOrdersForAdmin()
+        //public IQueryable<tblOrder> GetOrders(string ClientUserName)
         //{
-        //    OrderRepository orderRepo = new OrderRepository();
-        //    var tblOrderDetails = orderRepo.GetNonCompletedOrders("AutoLike");
-        //    return tblOrderDetails;
+        //    DataClassesDataContext DbContext = new DataClassesDataContext();
+        //    var tblOrderDetails = DbContext.tblOrders.Where(O => O.ClientUserName == ClientUserName);
+        //    return tblOrderDetails.OrderByDescending(O => O.OrderId);
         //}
+
+        [WebMethod]
+        public static object GetAutoLikeCompletedOrdersForAdmin()
+        {
+            OrderRepository orderRepo = new OrderRepository();
+            var tblOrderDetails = orderRepo.GetCompletedOrders("Like");
+            return tblOrderDetails;
+        }
+
+        [WebMethod]
+        public static object GetAutoLikeNonCompletedOrdersForAdmin()
+        {
+            OrderRepository orderRepo = new OrderRepository();
+            var tblOrderDetails = orderRepo.GetNonCompletedOrders("Like");
+            return tblOrderDetails;
+        }
 
         //[WebMethod]
         //public static object GetOrdersForUser()

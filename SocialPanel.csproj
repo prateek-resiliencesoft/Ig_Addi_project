@@ -71,7 +71,11 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="Admin\AddPlan.aspx" />
     <Content Include="Admin\AddToken.aspx" />
+    <Content Include="Admin\AutoLikeCompletedOrder.aspx" />
+    <Content Include="Admin\AutoLikeOrder.aspx" />
+    <Content Include="Admin\AutoLikeOrders.aspx" />
     <Content Include="Admin\ChangePassword.aspx" />
     <Content Include="Admin\CompletedOrders.aspx" />
     <Content Include="Admin\css\bootstrap-cerulean.css" />
@@ -465,6 +469,7 @@
     <Content Include="MailTemplate\Mail.txt" />
     <Content Include="misc\elfinder-connector\MySQLStorage.sql" />
     <Content Include="misc\uploadify.swf" />
+    <Content Include="post.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\jqx\gettheme.js" />
     <Content Include="Scripts\jqx\jquery-1.10.2.min.js" />
@@ -820,6 +825,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="test.aspx" />
     <Content Include="User\ChangePassword.aspx" />
     <Content Include="User\css\bootstrap-cerulean.css" />
     <Content Include="User\css\bootstrap-classic.css" />
@@ -1020,12 +1026,40 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\AddPlan.aspx.cs">
+      <DependentUpon>AddPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddPlan.aspx.designer.cs">
+      <DependentUpon>AddPlan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddToken.aspx.cs">
       <DependentUpon>AddToken.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\AddToken.aspx.designer.cs">
       <DependentUpon>AddToken.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AutoLikeCompletedOrder.aspx.cs">
+      <DependentUpon>AutoLikeCompletedOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AutoLikeCompletedOrder.aspx.designer.cs">
+      <DependentUpon>AutoLikeCompletedOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AutoLikeOrder.aspx.cs">
+      <DependentUpon>AutoLikeOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AutoLikeOrder.aspx.designer.cs">
+      <DependentUpon>AutoLikeOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AutoLikeOrders.aspx.cs">
+      <DependentUpon>AutoLikeOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AutoLikeOrders.aspx.designer.cs">
+      <DependentUpon>AutoLikeOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -1143,6 +1177,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\OrderRepository.cs" />
+    <Compile Include="Model\PlanRepository.cs" />
+    <Compile Include="post.aspx.cs">
+      <DependentUpon>post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="post.aspx.designer.cs">
+      <DependentUpon>post.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -1157,6 +1199,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -1221,20 +1270,20 @@
     <None Include="misc\elfinder-connector\elFinderVolumeMySQL.class.php" />
     <None Include="misc\elfinder-connector\mime.types" />
     <None Include="misc\uploadify.php" />
+    <Content Include="User\Site.Master" />
     <None Include="Model\DataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <Content Include="User\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Model\DataClasses.dbml.layout">
       <DependentUpon>DataClasses.dbml</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1249,7 +1298,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3940</DevelopmentServerPort>
+          <DevelopmentServerPort>10477</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

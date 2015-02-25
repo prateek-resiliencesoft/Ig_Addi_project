@@ -10,7 +10,7 @@ namespace SocialPanel.Model
         DataClassesDataContext DbContext = new DataClassesDataContext();
 
         public void AddOrder(string OrderNumber, string Url, int Amount,DateTime OrderDate, int StartPoint,
-            int EndPoint, int CurrentCount, string OrderStatus, DateTime LastUpdateDate)
+            int EndPoint, int CurrentCount, string OrderStatus, DateTime LastUpdateDate, string OrderType)
         {
             tblOrder order = new tblOrder();
 
@@ -23,7 +23,28 @@ namespace SocialPanel.Model
             order.CurrentCount = CurrentCount;
             order.OrderStatus = OrderStatus;
             order.LastUpdateDate = LastUpdateDate;
+            order.OrderType = OrderType;
 
+            DbContext.tblOrders.InsertOnSubmit(order);
+            DbContext.SubmitChanges();
+        }
+
+        public void AddOrder(string OrderNumber, string Url, int Amount, DateTime OrderDate, int StartPoint,
+            int EndPoint, int CurrentCount, string OrderStatus, DateTime LastUpdateDate, string OrderType,string Username)
+        {
+            tblOrder order = new tblOrder();
+
+            order.OrderNumber = OrderNumber;
+            order.Url = Url;
+            order.Amount = Amount;
+            order.OrderDate = OrderDate;
+            order.StartPoint = StartPoint;
+            order.EndPoint = EndPoint;
+            order.CurrentCount = CurrentCount;
+            order.OrderStatus = OrderStatus;
+            order.LastUpdateDate = LastUpdateDate;
+            order.OrderType = OrderType;
+            order.UserName = Username;
             DbContext.tblOrders.InsertOnSubmit(order);
             DbContext.SubmitChanges();
         }
@@ -42,9 +63,12 @@ namespace SocialPanel.Model
             DbContext.SubmitChanges();
         }
 
-        
 
 
+        public bool IsUrlExist(string Url)
+        {
+            return DbContext.tblOrders.Where(O => O.OrderType == "Like").Any(O => O.Url == Url);
+        }
 
         public tblOrder GetDetail(int OrderId)
         {
@@ -88,6 +112,12 @@ namespace SocialPanel.Model
             return tblOrderDetails.OrderByDescending(O => O.OrderId);
         }
 
+        public int GetTodayOrdersCount()
+        {
+            DataClassesDataContext DbContext = new DataClassesDataContext();
+            return DbContext.tblOrders.Count(O=>O.OrderDate>=DateTime.Now.Date);
+        }
+
         //public IQueryable<tblOrder> GetCompletedOrders()
         //{
         //    DataClassesDataContext DbContext = new DataClassesDataContext();
@@ -95,16 +125,29 @@ namespace SocialPanel.Model
         //    return tblOrderDetails.OrderByDescending(O => O.OrderId);
         //}
 
-        public IQueryable<tblOrder> GetCompletedOrders()
+        //public IQueryable<tblOrder> GetCompletedOrders()
+        //{
+        //    DataClassesDataContext DbContext = new DataClassesDataContext();
+        //    var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus == "Completed");
+        //    return tblOrderDetails.OrderByDescending(O => O.OrderId);
+        //}
+        //public IQueryable<tblOrder> GetNonCompletedOrders()
+        //{
+        //    DataClassesDataContext DbContext = new DataClassesDataContext();
+        //    var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus != "Completed");
+        //    return tblOrderDetails.OrderByDescending(O => O.OrderId);
+        //}
+
+        public IQueryable<tblOrder> GetCompletedOrders(string OrderType)
         {
             DataClassesDataContext DbContext = new DataClassesDataContext();
-            var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus == "Completed");
+            var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus == "Completed" && O.OrderType == OrderType);
             return tblOrderDetails.OrderByDescending(O => O.OrderId);
         }
-        public IQueryable<tblOrder> GetNonCompletedOrders()
+        public IQueryable<tblOrder> GetNonCompletedOrders(string OrderType)
         {
             DataClassesDataContext DbContext = new DataClassesDataContext();
-            var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus != "Completed");
+            var tblOrderDetails = DbContext.tblOrders.Where(O => O.OrderStatus != "Completed" && O.OrderType==OrderType);
             return tblOrderDetails.OrderByDescending(O => O.OrderId);
         }
 

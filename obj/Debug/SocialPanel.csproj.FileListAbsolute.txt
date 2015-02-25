@@ -35,3 +35,7 @@ C:\Users\RESILELCE\Desktop\Social web panel auto like latest\SocialWebPanel\bin\
 C:\Users\RESILELCE\Desktop\Social web panel auto like latest\SocialWebPanel\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\RESILELCE\Desktop\Social web panel auto like latest\SocialWebPanel\obj\Debug\SocialPanel.dll
 C:\Users\RESILELCE\Desktop\Social web panel auto like latest\SocialWebPanel\obj\Debug\SocialPanel.pdb
+E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\bin\SocialPanel.dll
+E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\bin\SocialPanel.pdb
+E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\obj\Debug\SocialPanel.dll
+E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\obj\Debug\SocialPanel.pdb

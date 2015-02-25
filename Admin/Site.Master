@@ -168,9 +168,14 @@
 						<li><a class="ajax-link" href="InstagramUsers.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Auto Like Users</span></a></li>
                         <li><a class="ajax-link" href="ItemPrice.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> Item Price</span></a></li>
 						<li><a class="ajax-link" href="ItemPrices.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Prices</span></a></li>--%>
+                         <li><a class="ajax-link" href="AddPlan.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> Add Plan</span></a></li>
                         <li><a class="ajax-link" href="Order.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> Order</span></a></li>
-						<li><a class="ajax-link" href="Orders.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Non Complete Orders</span></a></li>
-                        <li><a class="ajax-link" href="CompletedOrders.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Completed Orders</span></a></li>
+						<li><a class="ajax-link" href="Orders.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Follow Non Complete Orders</span></a></li>
+                        <li><a class="ajax-link" href="CompletedOrders.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Follow Completed Orders</span></a></li>
+
+						<li><a class="ajax-link" href="AutoLikeOrders.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Like Non Complete Orders</span></a></li>
+                        <li><a class="ajax-link" href="AutoLikeCompletedOrder.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Like Completed Orders</span></a></li>
+
 
                         <%--<li><a class="ajax-link" href="AutoLikeOrder.aspx"><i class="icon-edit"></i><span class="hidden-tablet"> Auto Like Order</span></a></li>
                         <li><a class="ajax-link" href="AutoLikeOrders.aspx"><i class="icon-align-justify"></i><span class="hidden-tablet"> Auto Like Non Complete Orders</span></a></li>
