@@ -33,4 +33,14 @@
       <Column Name="MaxPhotos" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="C325018_IGPanel.tbl_CutomerDetail" Member="tbl_CutomerDetails">
+    <Type Name="tbl_CutomerDetail">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CutomerId" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="InstagramUserName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Planid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OrderDate" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

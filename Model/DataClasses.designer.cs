@@ -39,6 +39,9 @@ namespace SocialPanel.Model
     partial void InserttblPlan(tblPlan instance);
     partial void UpdatetblPlan(tblPlan instance);
     partial void DeletetblPlan(tblPlan instance);
+    partial void Inserttbl_CutomerDetail(tbl_CutomerDetail instance);
+    partial void Updatetbl_CutomerDetail(tbl_CutomerDetail instance);
+    partial void Deletetbl_CutomerDetail(tbl_CutomerDetail instance);
     #endregion
 		
 		public DataClassesDataContext() : 
@@ -92,6 +95,14 @@ namespace SocialPanel.Model
 			get
 			{
 				return this.GetTable<tblPlan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbl_CutomerDetail> tbl_CutomerDetails
+		{
+			get
+			{
+				return this.GetTable<tbl_CutomerDetail>();
 			}
 		}
 	}
@@ -689,6 +700,188 @@ namespace SocialPanel.Model
 					this._MaxPhotos = value;
 					this.SendPropertyChanged("MaxPhotos");
 					this.OnMaxPhotosChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="C325018_IGPanel.tbl_CutomerDetail")]
+	public partial class tbl_CutomerDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _CutomerId;
+		
+		private string _InstagramUserName;
+		
+		private string _Planid;
+		
+		private string _Status;
+		
+		private string _OrderDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnCutomerIdChanging(string value);
+    partial void OnCutomerIdChanged();
+    partial void OnInstagramUserNameChanging(string value);
+    partial void OnInstagramUserNameChanged();
+    partial void OnPlanidChanging(string value);
+    partial void OnPlanidChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnOrderDateChanging(string value);
+    partial void OnOrderDateChanged();
+    #endregion
+		
+		public tbl_CutomerDetail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CutomerId", DbType="VarChar(500)")]
+		public string CutomerId
+		{
+			get
+			{
+				return this._CutomerId;
+			}
+			set
+			{
+				if ((this._CutomerId != value))
+				{
+					this.OnCutomerIdChanging(value);
+					this.SendPropertyChanging();
+					this._CutomerId = value;
+					this.SendPropertyChanged("CutomerId");
+					this.OnCutomerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstagramUserName", DbType="VarChar(500)")]
+		public string InstagramUserName
+		{
+			get
+			{
+				return this._InstagramUserName;
+			}
+			set
+			{
+				if ((this._InstagramUserName != value))
+				{
+					this.OnInstagramUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._InstagramUserName = value;
+					this.SendPropertyChanged("InstagramUserName");
+					this.OnInstagramUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Planid", DbType="VarChar(50)")]
+		public string Planid
+		{
+			get
+			{
+				return this._Planid;
+			}
+			set
+			{
+				if ((this._Planid != value))
+				{
+					this.OnPlanidChanging(value);
+					this.SendPropertyChanging();
+					this._Planid = value;
+					this.SendPropertyChanged("Planid");
+					this.OnPlanidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="VarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderDate", DbType="VarChar(500)")]
+		public string OrderDate
+		{
+			get
+			{
+				return this._OrderDate;
+			}
+			set
+			{
+				if ((this._OrderDate != value))
+				{
+					this.OnOrderDateChanging(value);
+					this.SendPropertyChanging();
+					this._OrderDate = value;
+					this.SendPropertyChanged("OrderDate");
+					this.OnOrderDateChanged();
 				}
 			}
 		}

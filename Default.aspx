@@ -22,6 +22,19 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="front/images/ico/apple-touch-icon-114-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="front/images/ico/apple-touch-icon-72-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" href="front/images/ico/apple-touch-icon-57-precomposed.png" />
+
+    <script type="text/javascript">
+        function validateForm() {
+            var x = document.forms["myForm"]["IgScreenName"].value;
+            if (x == null || x == "") {
+                alert("IgScreenName must be filled out");
+                return false;
+            }
+            else {
+                alert("testing");
+            }
+        }
+  </script>
 </head>
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
    <header id="header" role="banner">
@@ -249,7 +262,23 @@
                             <li>400GB Bandwidth</li>
                             <li>10 Email Address</li>
                             <li>Forum Support</li>
-                            <li class="plan-action"><a href="#" class="btn btn-primary btn-lg">Signup</a></li>
+                           
+                            <li class="plan-action"><a href="StripeAPI.aspx?id=9" class="btn btn-primary btn-lg">Pay
+                         <%--   <form name="myForm" action="StripeAPI.aspx" method="POST" onsubmit="return validateForm()" >
+
+   <li>Enter your IG Screen Name</li>
+<input  type="text" id="IgScreenName" name="IgScreenName"  />
+<input  type="hidden" id="plan" name="plan" value="plan1" />  
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_YcwwONdMD7MlZryTd2yspFGq"
+    data-amount="1500"
+    data-name="Silver Plan"
+    data-description="$15.00"
+    data-image="/128x128.png">
+  </script>
+  
+</form>--%></a></li>
                         </ul>
                     </div><!--/.col-sm-4-->
                     <div class="col-sm-4">

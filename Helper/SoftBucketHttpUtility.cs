@@ -579,7 +579,8 @@ namespace Social_Media_Service_Panel.Helper
             gRequest.KeepAlive = true;
             gRequest.ContentType = @"application/x-www-form-urlencoded";
             gRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            gRequest.Headers.Add("Accept-Encoding", "sdch"); 
+            gRequest.Headers.Add("Accept-Encoding", "sdch");
+            gRequest.Headers.Add("Authorization", "Bearer sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
             if (!string.IsNullOrEmpty(Referes))
             {
@@ -587,10 +588,13 @@ namespace Social_Media_Service_Panel.Helper
             }
             if (!string.IsNullOrEmpty(Token))
             {
-                gRequest.Headers.Add("X-NEW-APP", "1");
-                gRequest.Headers.Add("X-CSRFToken", Token);
-                gRequest.Headers.Add("X-Requested-With", "XMLHttpRequest");
+                //gRequest.Headers.Add("X-NEW-APP", "1");
+                //gRequest.Headers.Add("X-CSRFToken", Token);
+                //gRequest.Headers.Add("X-Requested-With", "XMLHttpRequest");
+                //gResponse.Headers.Add("Authorization", "Bearer sk_test_BQokikJOvBiI2HlWgH4olfQ2");
             }
+
+           
             ChangeProxy(proxyAddress, port, proxyUsername, proxyPassword);
 
             #region CookieManagement
@@ -623,10 +627,17 @@ namespace Social_Media_Service_Panel.Helper
             {
                 gResponse = (HttpWebResponse)gRequest.GetResponse();
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
-                Console.WriteLine(ex);
+                HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+                StreamReader reader = new StreamReader(httpResponse.GetResponseStream());
+                string responseString = reader.ReadToEnd();
+                reader.Close();
+                return responseString;
+
+                //Console.WriteLine(ex);
                 //Logger.LogText("Response from "+formActionUrl + ":" + ex.Message,null);
+                
             }
 
 
@@ -692,6 +703,15 @@ namespace Social_Media_Service_Panel.Helper
             {
                 ServicePointManager.Expect100Continue = false; 
             }
+        }
+
+        public static string ParseJsonForUserId(string data, string firsparamName, string secondparamName)
+        {
+            int startIndx = data.IndexOf(firsparamName) + firsparamName.Length;
+            int endIndx = data.IndexOf(secondparamName, startIndx + 1);
+
+            string value = data.Substring(startIndx, endIndx - startIndx).Trim();
+            return value;
         }
 
         public void ChangeProxy(string proxyAddress, int port, string proxyUsername, string proxyPassword)

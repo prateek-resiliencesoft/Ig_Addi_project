@@ -4,11 +4,66 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Social_Media_Service_Panel.Helper;
+using Social_Media_Service_Panel.ForImage.Helper;
 
 namespace SocialPanel.Helper
 {
     public class JsonParser
     {
+
+        public static SubscriptionDetails GetSubscriptionDetails(string Data)
+        {
+            SubscriptionDetails subscriptionDetails = new SubscriptionDetails();
+
+            try
+            {
+                subscriptionDetails = JsonConvert.DeserializeObject<SubscriptionDetails>(Data);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return subscriptionDetails;
+
+        }
+
+        public static InstagramUser GetInstagramUser(string Data)
+        {
+            InstagramUser instagramUser = new InstagramUser();
+
+            try
+            {
+                instagramUser = JsonConvert.DeserializeObject<InstagramUser>(Data);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return instagramUser;
+
+        }
+
+        public static InstagramImageResult GetImageResult(string data)
+        {
+            InstagramImageResult instaImage = new InstagramImageResult();
+
+            try
+            {
+                instaImage = JsonConvert.DeserializeObject<InstagramImageResult>(data);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return instaImage;
+        }
+
+
+
         public static MediaDetails GetMediaValue(string PageSource)
         {
             MediaDetails md = new MediaDetails();

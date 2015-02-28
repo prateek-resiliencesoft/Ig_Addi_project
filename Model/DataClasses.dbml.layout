@@ -20,5 +20,11 @@
         <elementListCompartment Id="8050b748-8a81-4572-9c20-c43b721e97cd" absoluteBounds="0.765, 5.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="af8d01f2-e1c9-4270-8b55-1950bd3b94b0" absoluteBounds="7.375, 3, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClassesDataContext/tbl_CutomerDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9da30460-c806-4393-b9c0-53d23a183806" absoluteBounds="7.39, 3.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

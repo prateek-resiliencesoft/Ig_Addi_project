@@ -15,7 +15,7 @@ namespace SocialPanel
         AddTokenRepository autoLikeRepo = new AddTokenRepository();
         OrderRepository orderRepo = new OrderRepository();
         PlanRepository plan = new PlanRepository();
-
+        CutomerDetailRepository objCutomerDetailRepository = new CutomerDetailRepository();
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -51,31 +51,32 @@ namespace SocialPanel
 
 
                             tblAccesstoken tblLikeUser = autoLikeRepo.GetUser(md.username);
-
-                            if (tblLikeUser != null)
+                           tbl_CutomerDetail objtbl_CutomerDetail= objCutomerDetailRepository.GetIGUseDetail(md.username);
+                           if (tblLikeUser != null && objtbl_CutomerDetail!=null)
                             {
                                 bool IsUrlExist = orderRepo.IsUrlExist(md.link);
 
                                 if (!IsUrlExist)
                                 {
-                                    //tblPlan planData = plan.GetPlan("Plan1");
-                                    //int TodayCount = orderRepo.GetTodayOrdersCount();
 
-                                    //if (TodayCount < planData.MaxPhotos)
-                                    //{
-                                    //    Random rnd = new Random();
-                                    int Num = 5;//int.Parse(planData.LikeAmount.ToString()); //rnd.Next(int.Parse(tblLikeUser.MinCount.ToString()), int.Parse(tblLikeUser.MaxCount.ToString()));
+                                    tblPlan planData = plan.GetPlan(objtbl_CutomerDetail.Planid);
+                                    int TodayCount = orderRepo.GetTodayOrdersCount();
 
-                                    string OrderNumber = Guid.NewGuid().ToString();
-                                    int EndPoint = md.likecount + Num;
-                                    //    //orderRepo.AddOrder("Extreme Instagram Likes", OrderNumber, md.link, Num, tblLikeUser.UserName, DateTime.Now, md.likecount, EndPoint, 0, "Pending", DateTime.Now, 0, "Like");
+                                    if (TodayCount < planData.MaxPhotos)
+                                    {
+                                        Random rnd = new Random();
+                                        int Num = int.Parse(planData.LikeAmount.ToString()); //rnd.Next(int.Parse(tblLikeUser.MinCount.ToString()), int.Parse(tblLikeUser.MaxCount.ToString()));
 
-                                    //    orderRepo.AddOrder(OrderNumber, md.link, Num,
-                                    //               DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
-                                    //}
+                                        string OrderNumber = Guid.NewGuid().ToString();
+                                        int EndPoint = md.likecount + Num;
+                                        //orderRepo.AddOrder("Extreme Instagram Likes", OrderNumber, md.link, Num, tblLikeUser.UserName, DateTime.Now, md.likecount, EndPoint, 0, "Pending", DateTime.Now, 0, "Like");
 
-                                    orderRepo.AddOrder(OrderNumber, md.link, Num,
-                                                  DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+                                        orderRepo.AddOrder(OrderNumber, md.link, Num,
+                                                   DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+                                    }
+
+                                    //orderRepo.AddOrder(OrderNumber, md.link, Num,
+                                    //              DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
                                 }
                             }
 

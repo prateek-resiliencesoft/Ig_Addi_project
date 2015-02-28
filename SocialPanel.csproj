@@ -469,6 +469,7 @@
     <Content Include="MailTemplate\Mail.txt" />
     <Content Include="misc\elfinder-connector\MySQLStorage.sql" />
     <Content Include="misc\uploadify.swf" />
+    <Content Include="paymentdemo.aspx" />
     <Content Include="post.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\jqx\gettheme.js" />
@@ -989,6 +990,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="StripeAPI.aspx" />
+    <Content Include="webhook.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -1137,12 +1140,15 @@
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\HttpCalls.cs" />
     <Compile Include="Helper\InstagramDetails.cs" />
+    <Compile Include="Helper\InstagramImageResult.cs" />
+    <Compile Include="Helper\InstagramUser.cs" />
     <Compile Include="Helper\JsonParser.cs" />
     <Compile Include="Helper\KeekDetails.cs" />
     <Compile Include="Helper\MailFormats.cs" />
     <Compile Include="Helper\MailHelper.cs" />
     <Compile Include="Helper\PinterestDetails.cs" />
     <Compile Include="Helper\SoftBucketHttpUtility.cs" />
+    <Compile Include="Helper\SubscriptionDetails.cs" />
     <Compile Include="Helper\TotalAmount.cs" />
     <Compile Include="Helper\TwitterDetails.cs" />
     <Compile Include="Helper\YouTubeDetails.cs" />
@@ -1168,6 +1174,7 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\AddTokenRepository.cs" />
+    <Compile Include="Model\CutomerDetailRepository.cs" />
     <Compile Include="Model\DataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1178,6 +1185,13 @@
     </Compile>
     <Compile Include="Model\OrderRepository.cs" />
     <Compile Include="Model\PlanRepository.cs" />
+    <Compile Include="paymentdemo.aspx.cs">
+      <DependentUpon>paymentdemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="paymentdemo.aspx.designer.cs">
+      <DependentUpon>paymentdemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="post.aspx.cs">
       <DependentUpon>post.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1241,6 +1255,20 @@
     </Compile>
     <Compile Include="User\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StripeAPI.aspx.cs">
+      <DependentUpon>StripeAPI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StripeAPI.aspx.designer.cs">
+      <DependentUpon>StripeAPI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webhook.aspx.cs">
+      <DependentUpon>webhook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webhook.aspx.designer.cs">
+      <DependentUpon>webhook.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
