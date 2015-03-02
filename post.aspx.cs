@@ -51,34 +51,38 @@ namespace SocialPanel
 
 
                             tblAccesstoken tblLikeUser = autoLikeRepo.GetUser(md.username);
-                           tbl_CutomerDetail objtbl_CutomerDetail= objCutomerDetailRepository.GetIGUseDetail(md.username);
-                           if (tblLikeUser != null && objtbl_CutomerDetail!=null)
-                            {
-                                bool IsUrlExist = orderRepo.IsUrlExist(md.link);
+                           //tbl_CutomerDetail objtbl_CutomerDetail= objCutomerDetailRepository.GetIGUseDetail(md.username);
+                           //if (tblLikeUser != null && objtbl_CutomerDetail!=null)
+                           // {
+                           //     bool IsUrlExist = orderRepo.IsUrlExist(md.link);
 
-                                if (!IsUrlExist)
-                                {
+                           //     if (!IsUrlExist)
+                           //     {
 
-                                    tblPlan planData = plan.GetPlan(objtbl_CutomerDetail.Planid);
-                                    int TodayCount = orderRepo.GetTodayOrdersCount();
+                           //         tblPlan planData = plan.GetPlan(objtbl_CutomerDetail.Planid);
+                           //         int TodayCount = orderRepo.GetTodayOrdersCount();
 
-                                    if (TodayCount < planData.MaxPhotos)
-                                    {
-                                        Random rnd = new Random();
-                                        int Num = int.Parse(planData.LikeAmount.ToString()); //rnd.Next(int.Parse(tblLikeUser.MinCount.ToString()), int.Parse(tblLikeUser.MaxCount.ToString()));
+                           //         if (TodayCount < planData.MaxPhotos)
+                           //         {
+                           //             Random rnd = new Random();
+                            int Num = 5;//int.Parse(planData.LikeAmount.ToString()); //rnd.Next(int.Parse(tblLikeUser.MinCount.ToString()), int.Parse(tblLikeUser.MaxCount.ToString()));
 
-                                        string OrderNumber = Guid.NewGuid().ToString();
-                                        int EndPoint = md.likecount + Num;
-                                        //orderRepo.AddOrder("Extreme Instagram Likes", OrderNumber, md.link, Num, tblLikeUser.UserName, DateTime.Now, md.likecount, EndPoint, 0, "Pending", DateTime.Now, 0, "Like");
+                            string OrderNumber = Guid.NewGuid().ToString();
+                            int EndPoint = md.likecount + Num;
+                           //             //orderRepo.AddOrder("Extreme Instagram Likes", OrderNumber, md.link, Num, tblLikeUser.UserName, DateTime.Now, md.likecount, EndPoint, 0, "Pending", DateTime.Now, 0, "Like");
 
-                                        orderRepo.AddOrder(OrderNumber, md.link, Num,
-                                                   DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
-                                    }
+                           //             orderRepo.AddOrder(OrderNumber, md.link, Num,
+                           //                        DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+                           //         }
 
-                                    //orderRepo.AddOrder(OrderNumber, md.link, Num,
-                                    //              DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
-                                }
-                            }
+                           //         //orderRepo.AddOrder(OrderNumber, md.link, Num,
+                           //         //              DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+                           //     }
+                            //}
+
+                            orderRepo.AddOrder(OrderNumber, md.link, Num,
+                                          DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+
 
                         }
                         catch (Exception ex)

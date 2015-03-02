@@ -227,6 +227,7 @@
     <Content Include="Admin\js\jquery.uploadify-3.1.min.js" />
     <Content Include="Admin\Order.aspx" />
     <Content Include="Admin\Orders.aspx" />
+    <Content Include="Admin\ViewPlan.aspx" />
     <Content Include="Admin\ViewTokens.aspx" />
     <Content Include="ChangePassword.aspx" />
     <Content Include="css\bootstrap-cerulean.css" />
@@ -1105,6 +1106,13 @@
     </Compile>
     <Compile Include="Admin\Orders.aspx.designer.cs">
       <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ViewPlan.aspx.cs">
+      <DependentUpon>ViewPlan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ViewPlan.aspx.designer.cs">
+      <DependentUpon>ViewPlan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ViewTokens.aspx.cs">
       <DependentUpon>ViewTokens.aspx</DependentUpon>

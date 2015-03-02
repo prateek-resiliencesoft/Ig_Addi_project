@@ -15,6 +15,14 @@ namespace Social_Media_Service_Panel
     {
 
         [WebMethod]
+        public static object ViewPlans()
+        {
+            PlanRepository plan = new PlanRepository();
+            var tblPlanDetails = plan.GetPlans();
+            return tblPlanDetails;
+        }
+
+        [WebMethod]
         public static object GetOrdersForAdmin()
         {
             OrderRepository orderRepo = new OrderRepository();

@@ -25,5 +25,10 @@ namespace SocialPanel.Model
         {
             return Dbcotext.tblPlans.FirstOrDefault(e => e.PlanName == PlanName);
         }
+
+        public List<tblPlan> GetPlans()
+        {
+            return Dbcotext.tblPlans.ToList();
+        }
     }
 }
