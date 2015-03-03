@@ -17,60 +17,57 @@ namespace SocialPanel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"]==null)
+
+            try
             {
-                Response.Redirect("Default.aspx",false);
+                if (Request.Form != null)
+                {
+                    string card = Request.Form["card"];
+                    string month = Request.Form["exprmonth"];
+                    string year = Request.Form["expryear"];
+                    string cvc = Request.Form["cvc"];
+                    string plan = Request.Form["plan"];
+                    string instagramuser = Request.Form["instagramuser"];
+
+                    if (!string.IsNullOrEmpty(instagramuser))
+                    {
+                        try
+                        {
+                            SoftBucketHttpUtility httpHelper = new SoftBucketHttpUtility();
+
+                            string mediaUrl = "https://api.stripe.com/v1/customers";
+                            string postData = "card[number]=" + card + "&card[exp_month]=" + month + "&card[exp_year]=" + year + "&card[cvc]=" + cvc + "&plan=" + plan;
+                            string MediaPageSource = httpHelper.PostDataToWeb(new Uri(mediaUrl), postData, string.Empty, string.Empty);
+
+                            SubscriptionDetails subscriptionDetails = JsonParser.GetSubscriptionDetails(MediaPageSource);
+
+                            //Insertt Query
+                            if (!objCutomerDetailRepository.CheckInstagramScreenNameExist(instagramuser) && subscriptionDetails != null) //Check Ig user exist or not
+                            {
+                                objCutomerDetailRepository.AddCutomerDetails(subscriptionDetails.sources.data[0].customer, instagramuser, plan);
+
+                            }
+                            else
+                            {
+                                objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan);
+                            }
+
+                            Response.Write("success : " + subscriptionDetails.sources.data[0].customer);
+                        }
+                        catch (Exception ex)
+                        {
+                            Response.Write("Failed : " + ex.Message);
+                        }
+
+                    }
+                }
             }
-
-            //if (Request.Form!=null)
-            //{
-            //    string IguserName = Request.Form["IgScreenName"];
-            //    string stripeToken = Request.Form["stripeToken"];
-            //    string stripeTokenType = Request.Form["stripeTokenType"];
-            //    string stripeEmail = Request.Form["stripeEmail"];
-            //    string plan = Request.Form["plan"];
-
-
-            
-            //}
+            catch (Exception ex)
+            {
+                Response.Write("Failed : " + ex.Message);
+            }
         }
 
-        protected void btnPay_Click(object sender, EventArgs e)
-        {
-
-            if (!string.IsNullOrEmpty(this.txtIgScrrenName.Text))
-            {
-                try
-                {
-                    SoftBucketHttpUtility httpHelper = new SoftBucketHttpUtility();
-
-                    string mediaUrl = "https://api.stripe.com/v1/customers";
-                    string postData = "card[number]=" + this.txtCard.Text + "&card[exp_month]=" + this.txtExpirationMonth.Text + "&card[exp_year]=" + this.txtExpirationYear.Text + "&card[cvc]=123&plan=" + Request.QueryString["id"].ToString();
-                    string MediaPageSource = httpHelper.PostDataToWeb(new Uri(mediaUrl), postData, string.Empty, string.Empty);
-
-                    SubscriptionDetails subscriptionDetails = JsonParser.GetSubscriptionDetails(MediaPageSource);
-
-                    //Insertt Query
-                    if (!objCutomerDetailRepository.CheckInstagramScreenNameExist(this.txtIgScrrenName.Text) && subscriptionDetails != null) //Check Ig user exist or not
-                    {
-                        objCutomerDetailRepository.AddCutomerDetails(subscriptionDetails.sources.data[0].customer, this.txtIgScrrenName.Text, Request.QueryString["id"].ToString());
-                        
-                    }
-                    else
-                    {
-                        objCutomerDetailRepository.UpdateCutomerDetails(this.txtIgScrrenName.Text, Request.QueryString["id"].ToString());
-                    }
-                    Response.Redirect("User/InstagramCallback.aspx", false);
-                }
-                catch (Exception ex)
-                {
-
-                    lblerror.Text = ex.Message;
-                }
-
-            }
-            
-           
-        }
+       
     }
 }

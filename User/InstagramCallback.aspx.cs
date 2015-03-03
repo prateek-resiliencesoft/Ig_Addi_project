@@ -65,7 +65,7 @@ namespace SocialPanel.User
                         try
                         {
 
-                            url = "http://instagram.com/" + objIGProfile.UserName;
+                            url = "https://instagram.com/" + objIGProfile.UserName;
 
                             startpoint = InstagramDetails.GetNumberOfFollow(url);
 

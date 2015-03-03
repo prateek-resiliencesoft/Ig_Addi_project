@@ -67,7 +67,7 @@ namespace SocialPanel.Model
 
         public bool IsUrlExist(string Url)
         {
-            return DbContext.tblOrders.Where(O => O.OrderType == "Like").Any(O => O.Url == Url);
+            return DbContext.tblOrders.Any(O => O.Url == Url);
         }
 
         public tblOrder GetDetail(int OrderId)
@@ -112,10 +112,10 @@ namespace SocialPanel.Model
             return tblOrderDetails.OrderByDescending(O => O.OrderId);
         }
 
-        public int GetTodayOrdersCount()
+        public int GetTodayOrdersCount(string UserName)
         {
             DataClassesDataContext DbContext = new DataClassesDataContext();
-            return DbContext.tblOrders.Count(O=>O.OrderDate>=DateTime.Now.Date);
+            return DbContext.tblOrders.Where(O => O.UserName == UserName).Count(O => O.OrderDate >= DateTime.Now.Date);
         }
 
         //public IQueryable<tblOrder> GetCompletedOrders()
