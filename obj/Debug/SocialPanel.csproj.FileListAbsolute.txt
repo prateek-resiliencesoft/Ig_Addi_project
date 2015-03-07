@@ -39,3 +39,4 @@ E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\
 E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\bin\SocialPanel.pdb
 E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\obj\Debug\SocialPanel.dll
 E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\obj\Debug\SocialPanel.pdb
+E:\Old F\PROJECTS\Current Projects\LATEST ASSEMBLA PROJECTS\WEB\Ig_Addi_project\obj\Debug\SocialPanel.csprojResolveAssemblyReference.cache

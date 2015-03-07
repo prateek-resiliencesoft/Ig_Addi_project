@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 using Social_Media_Service_Panel.Helper;
 using SocialPanel.Helper;
 using SocialPanel.Model;
+using System.Web.Services;
+using System.Xml.Serialization;
+using System.Text;
+using System.Web.Script.Serialization;
 
 namespace SocialPanel
 {
@@ -15,11 +19,42 @@ namespace SocialPanel
 
         CutomerDetailRepository objCutomerDetailRepository = new CutomerDetailRepository();
 
+        private void WriteResponseData(object obj)
+        {
+            this.Context.Response.Clear();
+
+            string responsetype = "json";
+            if (!string.IsNullOrEmpty(this.Context.Request.QueryString["responsetype"]))
+            {
+                responsetype = this.Context.Request.QueryString["responsetype"];
+            }
+
+            if (responsetype.ToLower().Equals("xml"))
+            {
+
+                var stringwriter = new System.IO.StringWriter();
+                var serializer = new XmlSerializer(obj.GetType());
+                serializer.Serialize(stringwriter, obj);
+
+                this.Context.Response.ContentType = "text/xml";
+                this.Context.Response.ContentEncoding = Encoding.UTF8;
+                this.Context.Response.Write(stringwriter.ToString());
+            }
+            else
+            {
+                this.Context.Response.ContentType = "application/json; charset=utf-8";
+                this.Context.Response.Write(new JavaScriptSerializer().Serialize(obj));
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            ClassMessage MSG = new ClassMessage();
 
             try
             {
+                
+
                 if (Request.Form != null)
                 {
                     string card = Request.Form["card"];
@@ -52,11 +87,14 @@ namespace SocialPanel
                                 objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan);
                             }
 
-                            Response.Write("success : " + subscriptionDetails.sources.data[0].customer);
+                            MSG.Type = "success";
+                            MSG.Message = subscriptionDetails.sources.data[0].customer;
+
                         }
                         catch (Exception ex)
                         {
-                            Response.Write("Failed : " + ex.Message);
+                            MSG.Type = "failed";
+                            MSG.Message = ex.Message;
                         }
 
                     }
@@ -64,10 +102,21 @@ namespace SocialPanel
             }
             catch (Exception ex)
             {
-                Response.Write("Failed : " + ex.Message);
+                MSG.Type = "failed";
+                MSG.Message = ex.Message;
             }
+
+            WriteResponseData(MSG);
+
         }
 
        
     }
+
+    public class ClassMessage
+    {
+        public string Type { get; set; }
+        public string Message { get; set; }
+    }
+
 }
