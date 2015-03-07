@@ -100,7 +100,7 @@ namespace SocialPanel.Admin
                             endpoint = startpoint + int.Parse(txtAmount.Text.Trim());
 
                             orderRepo.AddOrder(OrderNumber, url, int.Parse(txtAmount.Text.Trim()),
-                                                DateTime.Now, startpoint, endpoint, 0, ddlOrderStatus.SelectedItem.Value, DateTime.Now, ddlOrderStatus.SelectedItem.Value);
+                                                DateTime.Now, startpoint, endpoint, 0, ddlOrderStatus.SelectedItem.Value, DateTime.Now, ddlOrderType.SelectedItem.Value);
                             lblErrorMessage.Text = "Record successfully added";
                         }
                         catch (Exception ex)

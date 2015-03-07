@@ -580,7 +580,7 @@ namespace Social_Media_Service_Panel.Helper
             gRequest.ContentType = @"application/x-www-form-urlencoded";
             gRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             gRequest.Headers.Add("Accept-Encoding", "sdch");
-            gRequest.Headers.Add("Authorization", "Bearer sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+            gRequest.Headers.Add("Authorization", "Bearer sk_live_zy7OQg46H1pcltmE3jonD8P1");
 
             if (!string.IsNullOrEmpty(Referes))
             {
