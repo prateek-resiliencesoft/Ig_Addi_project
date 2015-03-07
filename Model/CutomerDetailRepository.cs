@@ -38,11 +38,13 @@ namespace SocialPanel.Model
         }
 
 
-        public void UpdateCutomerDetails(string instagramusername, string planid)
+        public void UpdateCutomerDetails(string instagramusername, string planid, string customerid)
         {
             {
                 tbl_CutomerDetail CutomerDetail = Dbcotext.tbl_CutomerDetails.First(O => O.InstagramUserName == instagramusername );
                 CutomerDetail.Planid = planid;
+                CutomerDetail.CutomerId = customerid;
+
                 CutomerDetail.OrderDate = DateTime.Now.ToString();
                 
                 Dbcotext.SubmitChanges();

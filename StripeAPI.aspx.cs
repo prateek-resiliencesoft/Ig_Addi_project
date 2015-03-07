@@ -84,7 +84,7 @@ namespace SocialPanel
                             }
                             else
                             {
-                                objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan);
+                                objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan, subscriptionDetails.sources.data[0].customer);
                             }
 
                             MSG.Type = "success";
