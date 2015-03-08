@@ -203,7 +203,7 @@
     <div id="footer">
         <div class="wrap">
             <div class="left">
-                Copyright © 2015 WeLikeU. All Rights Reserved.
+               Copyright © 2015 WeLikeU. All Rights Reserved.
             </div>
             <div class="right">
                 <ul>

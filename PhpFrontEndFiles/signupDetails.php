@@ -156,8 +156,7 @@
 
         global $con;
 
-        $result = $con->prepare("select * from tblLogin where password=:password AND (username=:username
-                             or email=:username)");
+        $result = $con->prepare("select * from tblLogin where username=:username and password=:password");
 
         $result->bindParam(':username', $uname);
         $result->bindParam(':password', $password);

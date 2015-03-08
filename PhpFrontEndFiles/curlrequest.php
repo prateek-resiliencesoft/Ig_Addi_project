@@ -21,7 +21,7 @@ $fields = array(
     'exprmonth' => $_POST['Expirymonth'],
     'expryear' => $_POST['Expiryyear'],
     'cvc' => $_POST['CVC'],
-    'plan'=>$_POST['Plan'],
+    'plan'=>$_SESSION['planid'],
     'instagramuser'=>$_POST['IGusername']
 
 );
@@ -36,27 +36,53 @@ $ch = curl_init();
 curl_setopt($ch,CURLOPT_URL, $url);
 curl_setopt($ch,CURLOPT_POST, 1);
 curl_setopt($ch,CURLOPT_POSTFIELDS, $fields);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 //execute post
 $result = curl_exec($ch);
-print_r($result);
+
+$obj = json_decode($result);
+$type=$obj->{'Type'};
+$cusid= $obj->{'Message'};
 
 //close connection
 curl_close($ch);
 
-echo $result;
+//echo $result;
+if	($type=="success")
+{
 $username=$_SESSION['user'];
-$customerid= 'cus_5oX7nyg8ESWOC711';
-$planid = $_POST['Plan'];
-$amount=1;
+$customerid= $cusid;
+$planid = $_SESSION['planid'];
+$amount=10;//$_SESSION['amount']; 
 $date = date('Y-m-d');
 
+$result = $con->prepare("select * from tblpayment where username=:username");
+
+        $result->bindParam(':username', $username);
 
 
-$strQuery = "insert into tblpayment (`username`,`customerid`,`planid`,`amount`,`date`)
+        $result->execute();
+        $rows = $result->rowCount();
+		$strQuery;
+			if ($rows == 1) {
+		$strQuery = "update tblpayment set `customerid` =:customerid,`planid`=:planid,`amount`=:amount,`date`=:date where 'username'=:username";
+		
+
+
+
+            
+}		
+		
+		else
+		{
+		$strQuery = "insert into tblpayment (`username`,`customerid`,`planid`,`amount`,`date`)
             VALUES (:username,:customerid,:planid,:amount,:date)";
 
 
+
+		
+		}
 $result1 = $con->prepare($strQuery);
 
 $result1->bindParam(':username', $username);
@@ -68,4 +94,11 @@ $result1->bindParam(':date', $date);
 
 
 $result1->execute();
+
+echo json_encode("success");
+}
+else
+{
+echo json_encode("failer");
+}
 

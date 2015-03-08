@@ -201,7 +201,7 @@
 if($planid==1)
 {
      $_SESSION['planid']=1;
-	 $_SESSION['amount']="$15";
+	 $_SESSION['amount']=15;
 	 $_SESSION['likescount']=100;
             echo "$15</div>100 Likes/Picture";
             
@@ -209,14 +209,14 @@ if($planid==1)
 		else if ($planid==2)
 		{
 		 $_SESSION['planid']=2;
-		  $_SESSION['amount']="$22";
+		  $_SESSION['amount']=22;
 		  $_SESSION['likescount']=250;
 		echo "$22</div>250 Likes/Picture";
 		}
 		else if ($planid==3)
 		{
 		 $_SESSION['planid']=3;
-		 $_SESSION['amount']="$35";
+		 $_SESSION['amount']=35;
 		 $_SESSION['likescount']=500;
 		echo "$35</div>500 Likes/Picture";
 		}
@@ -245,7 +245,7 @@ if($planid==1)
 
         <div class="s3">
             Total
-            <div class="cash"><?php session_start(); echo $_SESSION['amount']; ?></div>
+            <div class="cash">$<?php session_start(); echo $_SESSION['amount']; ?></div>
         </div>
 
     </div>
@@ -262,7 +262,7 @@ if($planid==1)
 <div id="footer">
     <div class="wrap">
         <div class="left">
-            Copyright © 2014 AutomaticViral. All Rights Reserved.
+            Copyright © 2015 WeLikeU. All Rights Reserved.
         </div>
         <div class="right">
             <ul>

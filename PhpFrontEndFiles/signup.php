@@ -227,7 +227,7 @@ $_SESSION['admin_login_user'];
         <h2>Overview</h2>
         <div class="s1">Instagram membership</div>
         <div class="s2">
-            <div class="cash"><?php session_start(); echo $_SESSION['amount']; ?></div>
+            <div class="cash">$<?php session_start(); echo $_SESSION['amount']; ?></div>
             <?php session_start(); echo $_SESSION['likescount']; ?>Likes/Picture
             &nbsp;
             <div class="gh"></div>
@@ -250,7 +250,7 @@ $_SESSION['admin_login_user'];
 
         <div class="s3">
             Total
-            <div class="cash"><?php session_start(); echo $_SESSION['amount']; ?></div>
+            <div class="cash">$<?php session_start(); echo $_SESSION['amount']; ?></div>
         </div>
 
     </div>
@@ -285,32 +285,16 @@ $_SESSION['admin_login_user'];
             <ul>
                 <li><a href="">home</a></li>
                 <li><a href="">pricing</a></li>
-                <li><a href="">faq</a></li>
+             <!--   <li><a href="">faq</a></li>
                 <li><a href="terms">terms</a></li>
-                <li><a href="">support</a></li>
+                <li><a href="">support</a></li> -->
             </ul>
         </div>
         <br class="clear">
     </div>
 </div>
 
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-54469444-1', 'auto');
-    ga('send', 'pageview');
-</script>
 
-<script>
-    //<![CDATA[
-    (function() {var s=document.createElement('script');
-        s.type='text/javascript';s.async=true;
-        s.src=('https:'==document.location.protocol?'https':'http') +
-        '://automaticviral.groovehq.com/widgets/b35735f2-1583-4c0c-9ad7-66b6821a7def/ticket.js'; var q = document.getElementsByTagName('script')[0];q.parentNode.insertBefore(s, q);})();
-    //]]>
-</script>
 
 
 </div></body></html>
