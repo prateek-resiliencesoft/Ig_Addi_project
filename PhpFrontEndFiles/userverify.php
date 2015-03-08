@@ -1,21 +1,23 @@
+
+
 <html lang="en"><head>
 
-    <title>Registration | Automatic Viral</title>
+    <title>Registration | WeLikeU</title>
 
     <meta name="viewport" content="width=450, initial-scale=0.3">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
 
-    <meta name="title" content="Registration | Automatic Viral">
+    <meta name="title" content="Registration | WeLikeU">
 
-    <link rel="canonical" href="http://automaticviral.com/register/add">
+  <link rel="canonical" href="http://automaticviral.com/register/add">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/css.css" rel="stylesheet" type="text/css">
+    <link href="css/css.css" rel="stylesheet" type="text/css"> 
 
-    <link href="http://automaticviral.com/favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
+     <!-- <link href="http://automaticviral.com/favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="http://automaticviral.com/static/icons/fav16x16.png?1" rel="icon" sizes="16x16">
-    <link href="http://automaticviral.com/static/icons/fav32x32.png?1" rel="icon" sizes="32x32">
+    <link href="http://automaticviral.com/static/icons/fav32x32.png?1" rel="icon" sizes="32x32">-->
 
     <script src="js/ticket.js" async="" type="text/javascript"></script><script src="js/analytics.js" async=""></script><script src="js/mixpanel-2.js" async="" type="text/javascript"></script><script type="text/javascript" src="js/jquery-2.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -33,8 +35,8 @@
 
 
 
-            $("#login").submit(function(){
-                //alert("hello1234");
+            $("#add-instagram-account-form").submit(function(){
+                alert("hello1234");
                 $("#loginMsg").hide();
 
 
@@ -117,8 +119,8 @@
 
                     <li><a href="">home</a></li>
                     <li class="delim"></li>                        <li><a href="">pricing</a></li>
-                    <li class="delim"></li>                        <li><a href="">faqs</a></li>
-                    <li class="delim"></li>                        <li><a href="">support</a></li>
+                  <!--  <li class="delim"></li>                        <li><a href="">faqs</a></li>
+                    <li class="delim"></li>                        <li><a href="">support</a></li> -->
 
                     <li class="login-btn">
                         <a href="login.php">login</a>
@@ -158,7 +160,7 @@
 <div class="content wrap">
 
     <div class="add-alert"></div>
-    <form id="login" class="box-form" action="userverify.php" method="POST">
+    <form id="add-instagram-account-form" class="box-form" action="userverify.php" method="POST">
 
 
         <div class="head">
@@ -187,13 +189,45 @@
     <div id="add-acc-overview">
         <h2>Overview</h2>
         <div class="s1">Instagram membership</div>
-        <div class="s2">
-            <div class="cash">1</div>
-            100 Likes/Picture
-            &nbsp;
+		<div class="s2">
+            <div class="cash">
+		<?php 
+		session_start();
+		$_SESSION['planid'];
+		$_SESSION['amount'];
+		$_SESSION['likescount'];
+ $planid = $_GET['id'];
+ 
+if($planid==1)
+{
+     $_SESSION['planid']=1;
+	 $_SESSION['amount']="$15";
+	 $_SESSION['likescount']=100;
+            echo "$15</div>100 Likes/Picture";
+            
+		}
+		else if ($planid==2)
+		{
+		 $_SESSION['planid']=2;
+		  $_SESSION['amount']="$22";
+		  $_SESSION['likescount']=250;
+		echo "$22</div>250 Likes/Picture";
+		}
+		else if ($planid==3)
+		{
+		 $_SESSION['planid']=3;
+		 $_SESSION['amount']="$35";
+		 $_SESSION['likescount']=500;
+		echo "$35</div>500 Likes/Picture";
+		}
+		else{
+		header("location:pricing.php");
+		}
+		
+		?>
+		&nbsp;
             <div class="gh"></div>
-        </div>
-
+        </div> 
         <div class="ttxt">
             <div class="thick"></div>
             <div class="t">Automatic Likes</div>
@@ -211,7 +245,7 @@
 
         <div class="s3">
             Total
-            <div class="cash">1</div>
+            <div class="cash"><?php session_start(); echo $_SESSION['amount']; ?></div>
         </div>
 
     </div>
@@ -243,23 +277,7 @@
     </div>
 </div>
 
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-54469444-1', 'auto');
-    ga('send', 'pageview');
-</script>
-
-<script>
-    //<![CDATA[
-    (function() {var s=document.createElement('script');
-        s.type='text/javascript';s.async=true;
-        s.src=('https:'==document.location.protocol?'https':'http') +
-        '://automaticviral.groovehq.com/widgets/b35735f2-1583-4c0c-9ad7-66b6821a7def/ticket.js'; var q = document.getElementsByTagName('script')[0];q.parentNode.insertBefore(s, q);})();
-    //]]>
-</script>
 
 
-</div><div class="closed right undefined " id="groove-feedback" style="display: block;"><div id="groove-button">  <a class="" id="gw-back-button" href="#" onclick="GrooveWidget.backClicked(); return false;">Back</a>  <a id="gw-header" href="#" onclick="GrooveWidget.toggle(); return false;"><span id="gw-header-content">Click here for help</span></a></div><div class="iframe">  <iframe id="groove-iframe" name="groove-iframe" allowtransparency="true" scrolling="no" style="min-height: 70px;" src="css/init.htm" frameborder="0" height="402">  </iframe></div><div id="gw-footer">  <a href="http://www.groovehq.com/" target="_blank">Powered by Groove</a></div></div></body></html>
+
+</div></body></html>

@@ -5,22 +5,22 @@ $_SESSION['admin_login_user'];
 
 <html lang="en"><head>
 
-    <title>Registration | Automatic Viral</title>
+    <title>Registration | WeLikeU</title>
 
     <meta name="viewport" content="width=450, initial-scale=0.3">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
 
-    <meta name="title" content="Registration | Automatic Viral">
+    <meta name="title" content="Registration | WeLikeU">
 
     <link rel="canonical" href="">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/css.css" rel="stylesheet" type="text/css">
 
-    <link href="favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
+   <!-- <link href="favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="static/icons/fav16x16.png?1" rel="icon" sizes="16x16">
-    <link href="static/icons/fav32x32.png?1" rel="icon" sizes="32x32">
+    <link href="static/icons/fav32x32.png?1" rel="icon" sizes="32x32"> -->
 
     <script src="js/ticket.js" async="" type="text/javascript"></script><script src="js/analytics.js" async=""></script><script src="js/mixpanel-2.js" async="" type="text/javascript"></script><script type="text/javascript" src="js/jquery-2.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -50,7 +50,7 @@ $_SESSION['admin_login_user'];
             // alert("registerMsg");
 
 
-            $("#signup").submit(function(){
+            $("#add-instagram-account-form").submit(function(){
                 //alert("hello1234");
                 $("#loginMsg").hide();
                 var uname = $("#username").val();
@@ -134,12 +134,12 @@ $_SESSION['admin_login_user'];
 
 
                     <li><a href="">home</a></li>
-                    <li class="delim"></li>                        <li><a href="pricing">pricing</a></li>
-                    <li class="delim"></li>                        <li><a href="faq">faqs</a></li>
-                    <li class="delim"></li>                        <li><a href="http://support.automaticviral.com/">support</a></li>
+                    <li class="delim"></li>                        <li><a href="user/pricing.php">pricing</a></li>
+                 <!--   <li class="delim"></li>                        <li><a href="faq">faqs</a></li>
+                    <li class="delim"></li>                        <li><a href="http://support.automaticviral.com/">support</a></li> -->
 
                     <li class="login-btn">
-                        <a href="login.php">login</a>
+                        <a href="user/login.php">login</a>
                     </li>
 
 
@@ -176,7 +176,7 @@ $_SESSION['admin_login_user'];
 <div class="content wrap">
 
     <div class="add-alert"></div>
-    <form id="signup" class="box-form" action="signup.php" method="POST">
+    <form id="add-instagram-account-form" class="box-form" action="signup.php" method="POST">
 
         <div class="head">
             <h2>Create an Account</h2>
@@ -227,8 +227,8 @@ $_SESSION['admin_login_user'];
         <h2>Overview</h2>
         <div class="s1">Instagram membership</div>
         <div class="s2">
-            <div class="cash">1</div>
-            100 Likes/Picture
+            <div class="cash"><?php session_start(); echo $_SESSION['amount']; ?></div>
+            <?php session_start(); echo $_SESSION['likescount']; ?>Likes/Picture
             &nbsp;
             <div class="gh"></div>
         </div>
@@ -250,7 +250,7 @@ $_SESSION['admin_login_user'];
 
         <div class="s3">
             Total
-            <div class="cash">1</div>
+            <div class="cash"><?php session_start(); echo $_SESSION['amount']; ?></div>
         </div>
 
     </div>
@@ -313,4 +313,4 @@ $_SESSION['admin_login_user'];
 </script>
 
 
-</div><div class="closed right undefined " id="groove-feedback" style="display: block;"><div id="groove-button">  <a class="" id="gw-back-button" href="#" onclick="GrooveWidget.backClicked(); return false;">Back</a>  <a id="gw-header" href="#" onclick="GrooveWidget.toggle(); return false;"><span id="gw-header-content">Click here for help</span></a></div><div class="iframe">  <iframe id="groove-iframe" name="groove-iframe" allowtransparency="true" scrolling="no" style="min-height: 70px;" src="css/init.htm" frameborder="0" height="402">  </iframe></div><div id="gw-footer">  <a href="http://www.groovehq.com/" target="_blank">Powered by Groove</a></div></div></body></html>
+</div></body></html>
