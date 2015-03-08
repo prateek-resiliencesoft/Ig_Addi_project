@@ -165,7 +165,7 @@
         $rows = $result->rowCount();//  fetch(PDO::FETCH_NUM);
 
         if ($rows == 1) {
-            $_SESSION['login_user']= $uname; // Initializing Session
+            $_SESSION['admin_login_user']= $uname; // Initializing Session
             // header("location:../ user/useralbums.php". $_POST['username']); // Redirecting To Other Page
 
             //  header( 'Location:../user/useralbums.php'.'?'.$_SESSION['login_user']) ;

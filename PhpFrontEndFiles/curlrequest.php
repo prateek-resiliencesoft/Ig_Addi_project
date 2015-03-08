@@ -54,7 +54,18 @@ if	($type=="success")
 $username=$_SESSION['user'];
 $customerid= $cusid;
 $planid = $_SESSION['planid'];
-$amount=10;//$_SESSION['amount']; 
+
+$amount=$_SESSION['amount']; 
+if($planid==1)
+{
+$amount=15;
+}elseif($planid==2)
+{
+$amount=22;
+}	elseif($planid==3)
+{
+$amount=35;
+}
 $date = date('Y-m-d');
 
 $result = $con->prepare("select * from tblpayment where username=:username");
@@ -66,7 +77,7 @@ $result = $con->prepare("select * from tblpayment where username=:username");
         $rows = $result->rowCount();
 		$strQuery;
 			if ($rows == 1) {
-		$strQuery = "update tblpayment set `customerid` =:customerid,`planid`=:planid,`amount`=:amount,`date`=:date where 'username'=:username";
+		$strQuery = "update tblpayment set customerid =:customerid,planid=:planid,amount=:amount,date=:date where username=:username";
 		
 
 
