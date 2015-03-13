@@ -3,7 +3,7 @@ $_SESSION['login_user']?>
 
 <html lang="en"><head>
 
-    <title>Login | AutomaticViral</title>
+    <title>Login | WeLikeU</title>
 
     <meta name="viewport" content="width=450, initial-scale=0.3">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -68,12 +68,13 @@ $_SESSION['login_user']?>
                         if(data=="Success")
                         {
                           //  var id=data.id;
-                          // alert(id);
+                          // alert(id);//
+						  alert("success");
                              window.location.href="profile.php";
                            //alert("success");
                         }else
                         {
-                           // alert("unsuccess");
+                            alert(data);
                             $("#loginMsg").show();
                             $("#loginMsg").html(data);
                         }

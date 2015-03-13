@@ -1,23 +1,28 @@
 <? session_start();
-$_SESSION['login_user']?>
+
+
+if(empty($_SESSION['login_user'])) 
+{ header("Location:login.php");}
+
+ ?>
 <html lang="en"><head>
 
-    <title>Registration | Automatic Viral</title>
+    <title>Profile | WeLikeU</title>
 
     <meta name="viewport" content="width=450, initial-scale=0.3">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
 
-    <meta name="title" content="Registration | Automatic Viral">
+    <meta name="title" content="Profile | WeLikeU">
 
-    <link rel="canonical" href="http://automaticviral.com/register/add">
+   <link rel="canonical" href="#">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/css.css" rel="stylesheet" type="text/css">
 
-    <link href="http://automaticviral.com/favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <!--    <link href="http://automaticviral.com/favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="http://automaticviral.com/static/icons/fav16x16.png?1" rel="icon" sizes="16x16">
-    <link href="http://automaticviral.com/static/icons/fav32x32.png?1" rel="icon" sizes="32x32">
+    <link href="http://automaticviral.com/static/icons/fav32x32.png?1" rel="icon" sizes="32x32">-->
 
     <script src="js/ticket.js" async="" type="text/javascript"></script><script src="js/analytics.js" async=""></script><script src="js/mixpanel-2.js" async="" type="text/javascript"></script><script type="text/javascript" src="js/jquery-2.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -114,6 +119,13 @@ $_SESSION['login_user']?>
     <div id="modal-container"></div>
 
     <div id="topbar">
+	
+	
+	
+	
+    <br class="clear">
+	
+	
         <div class="wrap">
 
             <a class="logo" href="#"></a>
@@ -124,8 +136,8 @@ $_SESSION['login_user']?>
 
 
                     <li><a href="">home</a></li>
-                    <li class="delim"></li>                        <li><a href="">pricing</a></li>
-                    <li class="delim"></li>                        <li><a href="">faqs</a></li>
+                 <!--    <li class="delim"></li>                        <li><a href="">pricing</a></li>
+                    <li class="delim"></li>                        <li><a href="">faqs</a></li>-->
 <!--                    <li class="delim"></li>                        <li><a href="">support</a></li>-->
                     <li class="delim"></li>                        <li><a href="settings.php?id=1">Settings</a></li>
                     <b style="color:#000;"><?php if(!empty($_SESSION['login_user'])) {echo $_SESSION['login_user'];} ?></b>
@@ -142,44 +154,46 @@ $_SESSION['login_user']?>
         </div>
     </div>
 
-<!--    <div id="register-tabs">
-        <div class="wrap">
-            <div class="tabs-container">
-                <div class="tab  completed active">
-                    <div class="icon">
-                    </div>
-                    <div class="title">Add Instagram Account</div>
-                </div>
-                <div class="tab " "="">
-                <div class="icon">
-                    <div>2</div>
-                </div>
-                <div class="title">Register</div>
-            </div>
-            <div class="tab ">
-                <div class="icon">
-                    <div>3</div>
-                </div>
-                <div class="title">Billing Information</div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="content wrap">
 
-    <div class="add-alert"></div>
--->
     <form id="show" class="box-form" action="profile.php" method="POST">
 
+ <div class="right-col">
+        <h2 class="blue">Account Information</h2>
+		<img />
+		Instagram user :-<?php echo $_SESSION['admin_login_user']; ?>
+		Followers:- 
+		Likes:-
+		Post:-
+		
+		</br></br></br></br></br></br>
+		
+	<h2 class="blue">Plan Details</h2>
+	My Plan 
+	<?php echo $_SESSION['planid']; ?>
+	<select name="Plans">
+  <option value="1" <?php if($_SESSION['planid']==1){echo 'selected';} ?> >100
+Likes/Picture $15/MO
+
+</option> 
+  <option value="2" <?php if($_SESSION['planid']==2){echo 'selected';} ?> >250
+Likes/Picture $22/MO</option>
+  <option value="3" <?php if($_SESSION['planid']==3){echo 'selected';} ?> > 500
+Likes/Picture $35/MO
+
+</option>
+</select>
+	
+
+ <div class="submit-section">
+            <input value="Update Plan" class="round" type="submit">
+        </div>
 
 
-
-
-            <div class="icon-input">
+         <!--   <div class="icon-input">
                 <div class="icon ico-ig"><div class=""></div></div>
 
                 <input id="IGScreenname" name="IGScreenname" type="text" readonly="readonly">
-            </div>
+            </div> -->
 
 
 
@@ -229,15 +243,15 @@ $_SESSION['login_user']?>
 <div id="footer">
     <div class="wrap">
         <div class="left">
-            Copyright © 2014 AutomaticViral. All Rights Reserved.
+            Copyright © 2015 WeLikeU. All Rights Reserved.
         </div>
         <div class="right">
             <ul>
-                <li><a href="">home</a></li>
-                <li><a href="">pricing</a></li>
-                <li><a href="">faq</a></li>
-                <li><a href="">terms</a></li>
-                <li><a href="">support</a></li>
+               <li><a href="http://welikeu.com">home</a></li>
+                    <li><a href="http://welikeu.com">pricing</a></li>
+                 <!--    <li><a href="http://welikeu.com">faq</a></li>
+                    <li><a href="http://welikeu.com">terms</a></li>
+                    <li><a href="http://welikeu.com">support</a></li> -->
             </ul>
         </div>
         <br class="clear">
