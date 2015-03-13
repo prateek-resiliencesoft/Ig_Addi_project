@@ -56,16 +56,7 @@ $customerid= $cusid;
 $planid = $_SESSION['planid'];
 
 $amount=$_SESSION['amount']; 
-if($planid==1)
-{
-$amount=15;
-}elseif($planid==2)
-{
-$amount=22;
-}	elseif($planid==3)
-{
-$amount=35;
-}
+
 $date = date('Y-m-d');
 
 $result = $con->prepare("select * from tblpayment where username=:username");

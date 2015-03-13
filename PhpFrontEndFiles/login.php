@@ -10,15 +10,15 @@ $_SESSION['login_user']?>
     <meta charset="utf-8">
 
 
-    <meta name="title" content="Login | AutomaticViral">
+    <meta name="title" content="Login | WeLikeU">
 
-    <link rel="canonical" href="http://automaticviral.com/login">
+    <link rel="canonical" href="#">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/css.css" rel="stylesheet" type="text/css">
 
-    <link href="http://automaticviral.com/favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
+    <!--   <link href="http://automaticviral.com/favicon.ico?1" rel="shortcut icon" type="image/vnd.microsoft.icon">
     <link href="http://automaticviral.com/static/icons/fav16x16.png?1" rel="icon" sizes="16x16">
-    <link href="http://automaticviral.com/static/icons/fav32x32.png?1" rel="icon" sizes="32x32">
+    <link href="http://automaticviral.com/static/icons/fav32x32.png?1" rel="icon" sizes="32x32">-->
 
     <script src="js/ticket.js" async="" type="text/javascript"></script><script src="js/analytics.js" async=""></script><script src="js/mixpanel-2.js" async="" type="text/javascript"></script><script type="text/javascript" src="js/jquery-2.js"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -128,14 +128,14 @@ $_SESSION['login_user']?>
                 <ul class="nav">
 
 
-                    <li><a href="http://automaticviral.com/">home</a></li>
-                    <li class="delim"></li>                        <li><a href="http://automaticviral.com/pricing">pricing</a></li>
-                    <li class="delim"></li>                        <li><a href="http://automaticviral.com/faq">faqs</a></li>
-                    <li class="delim"></li>                        <li><a href="http://support.automaticviral.com/">support</a></li>
+                 <li><a href="http://welikeu.com/">home</a></li>
+                                                <li><a href="http://welikeu.com/user/pricing.php" class="active">pricing</a></li>
+                                                <!--<li><a href="http://welikeu.com/faq">faqs</a></li>
+                        <li class="delim"></li>                        <li><a href="http://welikeu.com/">support</a></li> -->
 
-                    <li class="login-btn">
-                        <a href="http://automaticviral.com/login">login</a>
-                    </li>
+                                                <li class="login-btn">
+                            <a href="http://welikeu.com/user/login.php">login</a>
+                        </li>
 
 
 
@@ -187,15 +187,15 @@ $_SESSION['login_user']?>
     <div id="footer">
         <div class="wrap">
             <div class="left">
-                Copyright © 2014 AutomaticViral. All Rights Reserved.
+                 Copyright © 2015 WeLikeU. All Rights Reserved.
             </div>
             <div class="right">
                 <ul>
-                    <li><a href="http://automaticviral.com/">home</a></li>
-                    <li><a href="http://automaticviral.com/pricing">pricing</a></li>
-                    <li><a href="http://automaticviral.com/faq">faq</a></li>
-                    <li><a href="http://automaticviral.com/terms">terms</a></li>
-                    <li><a href="http://support.automaticviral.com/">support</a></li>
+                    <li><a href="http://welikeu.com">home</a></li>
+                    <li><a href="http://welikeu.com">pricing</a></li>
+                 <!--    <li><a href="http://welikeu.com">faq</a></li>
+                    <li><a href="http://welikeu.com">terms</a></li>
+                    <li><a href="http://welikeu.com">support</a></li> -->
                 </ul>
             </div>
             <br class="clear">
