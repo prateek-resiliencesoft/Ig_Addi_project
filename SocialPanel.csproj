@@ -532,6 +532,7 @@
     <Content Include="Scripts\jqx\jqxtreemap.js" />
     <Content Include="Scripts\jqx\jqxvalidator.js" />
     <Content Include="Scripts\jqx\jqxwindow.js" />
+    <Content Include="StripeCancel.aspx" />
     <Content Include="Styles\datePicker.css" />
     <Content Include="Styles\Jqx\images\add.png" />
     <Content Include="Styles\Jqx\images\backgroundTop.png" />
@@ -1221,6 +1222,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StripeCancel.aspx.cs">
+      <DependentUpon>StripeCancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StripeCancel.aspx.designer.cs">
+      <DependentUpon>StripeCancel.aspx</DependentUpon>
     </Compile>
     <Compile Include="test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

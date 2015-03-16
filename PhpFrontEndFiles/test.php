@@ -42,6 +42,54 @@ $password = "Password1";
 try {
     $dbh = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
     echo "Connected to database"; // check for connection
+	$uname='prateek';
+	$password='1';
+	 $result = $dbh->prepare("select * from tblLogin where username=:username and password=:password");
+
+        $result->bindParam(':username', $uname);
+        $result->bindParam(':password', $password);
+
+        $result->execute();
+        $rows = $result->rowCount();//  fetch(PDO::FETCH_NUM);
+		$return = $result->fetch(PDO::FETCH_OBJ);
+		 if ($rows == 1) {
+          echo  $_SESSION['login_user']= $uname;
+		echo	$_SESSION['IGScreenname']=$return->IGScreenname;
+		
+		
+			$planid = $dbh->prepare("select * from tblpayment where username=:username");
+			$planid->bindParam(':username', $uname);
+			$planid->execute();
+			$plan_id = $planid->fetch(PDO::FETCH_OBJ);
+			$pid=$plan_id->planid;
+			
+			if($pid==1)
+			{
+			$_SESSION['planid']=1;
+			$_SESSION['amount']=15;
+			$_SESSION['likescount']=100;
+			echo $pid;
+			}
+			else if($pid==2)
+			{
+			 $_SESSION['planid']=2;
+			$_SESSION['amount']=22;
+			$_SESSION['likescount']=250;
+			echo $pid;
+			}
+			else if($pid==3)
+			{
+			$_SESSION['planid']=3;
+			$_SESSION['amount']=35;
+			$_SESSION['likescount']=500;
+			echo $pid;
+			}
+			
+			}
+			else
+			{
+			echo 'false';
+			}
 }
 catch(PDOException $e)
 {

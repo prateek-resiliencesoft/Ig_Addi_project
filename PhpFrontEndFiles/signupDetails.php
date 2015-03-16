@@ -163,9 +163,41 @@
 
         $result->execute();
         $rows = $result->rowCount();//  fetch(PDO::FETCH_NUM);
-
+		$return = $result->fetch(PDO::FETCH_OBJ);
         if ($rows == 1) {
-            $_SESSION['admin_login_user']= $uname; // Initializing Session
+            $_SESSION['login_user']= $uname;
+			$_SESSION['admin_login_user']=$return->IGScreenname;
+			
+			//get Plan id
+			$planid = $con->prepare("select * from tblpayment where username=:username");
+			$planid->bindParam(':username', $uname);
+			$planid->execute();
+			$plan_id = $planid->fetch(PDO::FETCH_OBJ);
+			$pid=$plan_id->planid;
+			
+			if($pid==1)
+			{
+			$_SESSION['planid']=1;
+			$_SESSION['amount']=15;
+			$_SESSION['likescount']=100;
+			//echo $pid;
+			}
+			else if($pid==2)
+			{
+			 $_SESSION['planid']=2;
+			$_SESSION['amount']=22;
+			$_SESSION['likescount']=250;
+			//echo $pid;
+			}
+			else if($pid==3)
+			{
+			$_SESSION['planid']=3;
+			$_SESSION['amount']=35;
+			$_SESSION['likescount']=500;
+			//echo $pid;
+			}
+			
+			// Initializing Session
             // header("location:../ user/useralbums.php". $_POST['username']); // Redirecting To Other Page
 
             //  header( 'Location:../user/useralbums.php'.'?'.$_SESSION['login_user']) ;
