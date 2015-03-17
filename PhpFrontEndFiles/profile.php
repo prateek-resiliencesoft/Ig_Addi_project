@@ -169,6 +169,8 @@ $_SESSION['login_user']?>
 
     <div class="add-alert"></div>
 -->
+
+    <a href="https://api.instagram.com/oauth/authorize/?client_id=d699b2681e2644479f4b97b76b2bda33&redirect_uri=http://52.10.69.137/User/InstagramCallback.aspx&response_type=code&&scope=comments+likes+relationships"><div class="btn blue huge">Subscribe Instagram Application</div></a>
     <form id="show" class="box-form" action="profile.php" method="POST">
 
 
@@ -184,6 +186,7 @@ $_SESSION['login_user']?>
 
 
     </form>
+
 
    <!-- <div id="add-acc-overview">
         <h2>Overview</h2>

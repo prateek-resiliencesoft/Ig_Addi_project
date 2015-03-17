@@ -52,6 +52,7 @@ namespace SocialPanel.User
                     {
                         //Update User
                         objaccesstoken.Updatecheckid(objIGProfile.AccessToken, objIGProfile.UserName);
+                        Response.Redirect("http://welikeu.com/user/profile.php",false);
                     }
                     else
                     {
@@ -79,6 +80,8 @@ namespace SocialPanel.User
                         {
 
                         }
+
+                        Response.Redirect("http://welikeu.com/user/profile.php",false);
                     }
                 }
 
