@@ -29,6 +29,23 @@ namespace SocialPanel.Helper
 
         }
 
+        public static CancelSubscription CancelSubscriptionDetails(string Data)
+        {
+            CancelSubscription cancelSubscription = new CancelSubscription();
+
+            try
+            {
+                cancelSubscription = JsonConvert.DeserializeObject<CancelSubscription>(Data);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return cancelSubscription;
+
+        }
+
         public static InstagramUser GetInstagramUser(string Data)
         {
             InstagramUser instagramUser = new InstagramUser();

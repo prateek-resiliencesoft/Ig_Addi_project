@@ -743,6 +743,8 @@ namespace SocialPanel.Model
 		
 		private string _OrderDate;
 		
+		private string _subscriptionid;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -759,6 +761,8 @@ namespace SocialPanel.Model
     partial void OnStatusChanged();
     partial void OnOrderDateChanging(string value);
     partial void OnOrderDateChanged();
+    partial void OnsubscriptionidChanging(string value);
+    partial void OnsubscriptionidChanged();
     #endregion
 		
 		public tbl_CutomerDetail()
@@ -882,6 +886,26 @@ namespace SocialPanel.Model
 					this._OrderDate = value;
 					this.SendPropertyChanged("OrderDate");
 					this.OnOrderDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_subscriptionid", DbType="VarChar(50)")]
+		public string subscriptionid
+		{
+			get
+			{
+				return this._subscriptionid;
+			}
+			set
+			{
+				if ((this._subscriptionid != value))
+				{
+					this.OnsubscriptionidChanging(value);
+					this.SendPropertyChanging();
+					this._subscriptionid = value;
+					this.SendPropertyChanged("subscriptionid");
+					this.OnsubscriptionidChanged();
 				}
 			}
 		}

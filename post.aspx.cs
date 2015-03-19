@@ -57,42 +57,45 @@ namespace SocialPanel
                             tblAccesstoken tblLikeUser = autoLikeRepo.GetUser(md.username);
                             tbl_CutomerDetail objtbl_CutomerDetail = objCutomerDetailRepository.GetIGUseDetail(md.username);
 
-                            FileHelper.AppendStringToTextfileNewLine("Customer Details Found : " + media_id, Server.MapPath("Result.txt"));
-
-                            if (tblLikeUser != null && objtbl_CutomerDetail != null)
+                            if (objtbl_CutomerDetail.Status == "true")
                             {
-                                FileHelper.AppendStringToTextfileNewLine("Checking For Null : " + media_id, Server.MapPath("Result.txt"));
+                                FileHelper.AppendStringToTextfileNewLine("Customer Details Found : " + media_id, Server.MapPath("Result.txt"));
 
-                                bool IsUrlExist = orderRepo.IsUrlExist(md.link);
-
-                                if (!IsUrlExist)
+                                if (tblLikeUser != null && objtbl_CutomerDetail != null)
                                 {
-                                    FileHelper.AppendStringToTextfileNewLine("Url Not Exist : " + media_id, Server.MapPath("Result.txt"));
+                                    FileHelper.AppendStringToTextfileNewLine("Checking For Null : " + media_id, Server.MapPath("Result.txt"));
 
-                                    tblPlan planData = plan.GetPlan(objtbl_CutomerDetail.Planid);
-                                    int TodayCount = orderRepo.GetTodayOrdersCount(md.username);
+                                    bool IsUrlExist = orderRepo.IsUrlExist(md.link);
 
-                                    FileHelper.AppendStringToTextfileNewLine("Url Not Exist : " + TodayCount + ":" + planData.MaxPhotos, Server.MapPath("Result.txt"));
-
-                                    if (TodayCount < planData.MaxPhotos)
+                                    if (!IsUrlExist)
                                     {
-                                        Random rnd = new Random();
-                                        int Num = int.Parse(planData.LikeAmount.ToString()); //rnd.Next(int.Parse(tblLikeUser.MinCount.ToString()), int.Parse(tblLikeUser.MaxCount.ToString()));
+                                        FileHelper.AppendStringToTextfileNewLine("Url Not Exist : " + media_id, Server.MapPath("Result.txt"));
 
-                                        string OrderNumber = Guid.NewGuid().ToString();
-                                        int EndPoint = md.likecount + Num;
-                                        //orderRepo.AddOrder("Extreme Instagram Likes", OrderNumber, md.link, Num, tblLikeUser.UserName, DateTime.Now, md.likecount, EndPoint, 0, "Pending", DateTime.Now, 0, "Like");
+                                        tblPlan planData = plan.GetPlan(objtbl_CutomerDetail.Planid);
+                                        int TodayCount = orderRepo.GetTodayOrdersCount(md.username);
 
-                                        orderRepo.AddOrder(OrderNumber, md.link, Num,
-                                                   DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+                                        FileHelper.AppendStringToTextfileNewLine("Url Not Exist : " + TodayCount + ":" + planData.MaxPhotos, Server.MapPath("Result.txt"));
+
+                                        if (TodayCount < planData.MaxPhotos)
+                                        {
+                                            Random rnd = new Random();
+                                            int Num = int.Parse(planData.LikeAmount.ToString()); //rnd.Next(int.Parse(tblLikeUser.MinCount.ToString()), int.Parse(tblLikeUser.MaxCount.ToString()));
+
+                                            string OrderNumber = Guid.NewGuid().ToString();
+                                            int EndPoint = md.likecount + Num;
+                                            //orderRepo.AddOrder("Extreme Instagram Likes", OrderNumber, md.link, Num, tblLikeUser.UserName, DateTime.Now, md.likecount, EndPoint, 0, "Pending", DateTime.Now, 0, "Like");
+
+                                            orderRepo.AddOrder(OrderNumber, md.link, Num,
+                                                       DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
+                                        }
+
+                                        //orderRepo.AddOrder(OrderNumber, md.link, Num,
+                                        //              DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
                                     }
-
-                                    //orderRepo.AddOrder(OrderNumber, md.link, Num,
-                                    //              DateTime.Now, 0, EndPoint, 0, "Pending", DateTime.Now, "Like", md.username);
-                                }
-                                else
-                                {
-                                    FileHelper.AppendStringToTextfileNewLine("Url Exist : " + media_id, Server.MapPath("Result.txt"));
+                                    else
+                                    {
+                                        FileHelper.AppendStringToTextfileNewLine("Url Exist : " + media_id, Server.MapPath("Result.txt"));
+                                    }
                                 }
                             }
 

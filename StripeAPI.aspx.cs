@@ -64,6 +64,13 @@ namespace SocialPanel
                     string plan = Request.Form["plan"];
                     string instagramuser = Request.Form["instagramuser"];
 
+                    //string card = "4242424242424242";
+                    //string month = "10";
+                    //string year = "2016";
+                    //string cvc = "899";
+                    //string plan = "1";
+                    //string instagramuser ="vivankapoor";
+
                     if (!string.IsNullOrEmpty(instagramuser))
                     {
                         try
@@ -79,12 +86,12 @@ namespace SocialPanel
                             //Insertt Query
                             if (!objCutomerDetailRepository.CheckInstagramScreenNameExist(instagramuser) && subscriptionDetails != null) //Check Ig user exist or not
                             {
-                                objCutomerDetailRepository.AddCutomerDetails(subscriptionDetails.sources.data[0].customer, instagramuser, plan);
+                                objCutomerDetailRepository.AddCutomerDetails(subscriptionDetails.sources.data[0].customer, instagramuser, plan,subscriptionDetails.subscriptions.data[0].id);
 
                             }
                             else
                             {
-                                objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan, subscriptionDetails.sources.data[0].customer);
+                                objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan, subscriptionDetails.sources.data[0].customer,subscriptionDetails.subscriptions.data[0].id);
                             }
 
                             MSG.Type = "success";

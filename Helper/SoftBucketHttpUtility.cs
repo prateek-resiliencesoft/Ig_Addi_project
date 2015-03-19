@@ -697,6 +697,136 @@ namespace Social_Media_Service_Panel.Helper
             
         }
 
+        public string PostDataToCancel(Uri formActionUrl, string postData, string Referes, string Token)
+        {
+
+            gRequest = (HttpWebRequest)WebRequest.Create(formActionUrl);
+            gRequest.UserAgent = "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16";
+
+            gRequest.CookieContainer = new CookieContainer();// gCookiesContainer;
+            gRequest.Method = "DELETE";
+            gRequest.Accept = "application/json,text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8, */*";
+            gRequest.KeepAlive = true;
+            gRequest.ContentType = @"application/x-www-form-urlencoded";
+            gRequest.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            gRequest.Headers.Add("Accept-Encoding", "sdch");
+            gRequest.Headers.Add("Authorization", "Bearer sk_live_zy7OQg46H1pcltmE3jonD8P1");
+
+            if (!string.IsNullOrEmpty(Referes))
+            {
+                gRequest.Referer = Referes;
+            }
+            if (!string.IsNullOrEmpty(Token))
+            {
+                //gRequest.Headers.Add("X-NEW-APP", "1");
+                //gRequest.Headers.Add("X-CSRFToken", Token);
+                //gRequest.Headers.Add("X-Requested-With", "XMLHttpRequest");
+                //gResponse.Headers.Add("Authorization", "Bearer sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+            }
+
+
+            ChangeProxy(proxyAddress, port, proxyUsername, proxyPassword);
+
+            #region CookieManagement
+            if (this.gCookies != null && this.gCookies.Count > 0)
+            {
+                setExpect100Continue();
+                gRequest.CookieContainer.Add(gCookies);
+            }
+
+            //logic to postdata to the form
+            try
+            {
+                setExpect100Continue();
+                string postdata = string.Format(postData);
+                byte[] postBuffer = System.Text.Encoding.GetEncoding(1252).GetBytes(postData);
+                gRequest.ContentLength = postBuffer.Length;
+                Stream postDataStream = gRequest.GetRequestStream();
+                postDataStream.Write(postBuffer, 0, postBuffer.Length);
+                postDataStream.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                // Logger.LogText("Internet Connectivity Exception : "+ ex.Message,null);
+            }
+            //post data logic ends
+
+            //Get Response for this request url
+            try
+            {
+                gResponse = (HttpWebResponse)gRequest.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+                StreamReader reader = new StreamReader(httpResponse.GetResponseStream());
+                string responseString = reader.ReadToEnd();
+                reader.Close();
+                return responseString;
+
+                //Console.WriteLine(ex);
+                //Logger.LogText("Response from "+formActionUrl + ":" + ex.Message,null);
+
+            }
+
+
+
+            //check if the status code is http 200 or http ok
+
+            if (gResponse.StatusCode == HttpStatusCode.OK)
+            {
+                //get all the cookies from the current request and add them to the response object cookies
+                setExpect100Continue();
+                gResponse.Cookies = gRequest.CookieContainer.GetCookies(gRequest.RequestUri);
+                //check if response object has any cookies or not
+                //Added by sandeep pathak
+                //gCookiesContainer = gRequest.CookieContainer;  
+
+                if (gResponse.Cookies.Count > 0)
+                {
+                    //check if this is the first request/response, if this is the response of first request gCookies
+                    //will be null
+                    if (this.gCookies == null)
+                    {
+                        gCookies = gResponse.Cookies;
+                    }
+                    else
+                    {
+                        foreach (Cookie oRespCookie in gResponse.Cookies)
+                        {
+                            bool bMatch = false;
+                            foreach (Cookie oReqCookie in this.gCookies)
+                            {
+                                if (oReqCookie.Name == oRespCookie.Name)
+                                {
+                                    oReqCookie.Value = oRespCookie.Value;
+                                    bMatch = true;
+                                    break; // 
+                                }
+                            }
+                            if (!bMatch)
+                                this.gCookies.Add(oRespCookie);
+                        }
+                    }
+                }
+            #endregion
+
+
+
+                StreamReader reader = new StreamReader(gResponse.GetResponseStream());
+                string responseString = reader.ReadToEnd();
+                reader.Close();
+                //Console.Write("Response String:" + responseString);
+                return responseString;
+            }
+            else
+            {
+                return "Error in posting data";
+            }
+
+        }
+
         public void setExpect100Continue()
         {
             if (ServicePointManager.Expect100Continue==true)

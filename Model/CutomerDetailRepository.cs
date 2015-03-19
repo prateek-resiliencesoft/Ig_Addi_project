@@ -14,6 +14,10 @@ namespace SocialPanel.Model
             return Dbcotext.tbl_CutomerDetails.Where(e => e.InstagramUserName == instagramusername).Any();
         }
 
+        public string GetSubscription(string customerid)
+        {
+            return Dbcotext.tbl_CutomerDetails.FirstOrDefault(e => e.CutomerId == customerid).subscriptionid;
+        }
 
         public tbl_CutomerDetail GetIGUseDetail(string instagramUser)
         {
@@ -21,14 +25,14 @@ namespace SocialPanel.Model
         }
 
 
-        public void AddCutomerDetails(string cutomerid, string instagramusername, string planid)
+        public void AddCutomerDetails(string cutomerid, string instagramusername, string planid, string subscriptionid)
         {
             tbl_CutomerDetail CutomerDetail = new tbl_CutomerDetail();
 
             CutomerDetail.CutomerId = cutomerid;
             CutomerDetail.InstagramUserName = instagramusername;
             CutomerDetail.Planid = planid;
-
+            CutomerDetail.subscriptionid = subscriptionid;
             CutomerDetail.OrderDate = DateTime.Now.ToString();
             CutomerDetail.Status = "true";
 
@@ -38,17 +42,26 @@ namespace SocialPanel.Model
         }
 
 
-        public void UpdateCutomerDetails(string instagramusername, string planid, string customerid)
+        public void UpdateCutomerDetails(string instagramusername, string planid, string customerid, string subscriptionid)
         {
             {
                 tbl_CutomerDetail CutomerDetail = Dbcotext.tbl_CutomerDetails.First(O => O.InstagramUserName == instagramusername );
                 CutomerDetail.Planid = planid;
                 CutomerDetail.CutomerId = customerid;
-
+                CutomerDetail.subscriptionid = subscriptionid;
+                CutomerDetail.Status = "true";
                 CutomerDetail.OrderDate = DateTime.Now.ToString();
                 
                 Dbcotext.SubmitChanges();
             }
+        }
+
+        public void UpdateStatus(string CutomerId, string status)
+        {
+            tbl_CutomerDetail CutomerDetail = Dbcotext.tbl_CutomerDetails.FirstOrDefault(O => O.CutomerId == CutomerId);
+            CutomerDetail.Status = status;
+
+            Dbcotext.SubmitChanges();
         }
 
     }

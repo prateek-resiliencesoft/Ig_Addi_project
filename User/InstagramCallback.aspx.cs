@@ -24,8 +24,8 @@ namespace SocialPanel.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
 
                 string RedirectUri = ConfigurationManager.AppSettings["redirecturl"];
                 if (Request["code"] == null && Session["Instagram"] == null)
@@ -33,7 +33,7 @@ namespace SocialPanel.User
                     string ClientId = ConfigurationManager.AppSettings["client_id"];
 
                     string authorizationUrl = "https://api.instagram.com/oauth/authorize/?client_id=" + ClientId + "&redirect_uri=" + RedirectUri + "&response_type=code&&scope=comments+likes+relationships";
-                    //string authorizationUrl = "https://api.instagram.com/oauth/authorize/?client_id=ff93a1cc8b6e45799f3019e8e01d5b2b&redirect_uri=http://localhost:34129/User/InstagramCallback.aspx&response_type=code&&scope=comments+likes+relationships";
+                    //string authorizationUrl = "https://api.instagram.com/oauth/authorize/?client_id=01be309e0c894bd0a169087bc6bd011c&redirect_uri=http://localhost:10477/User/InstagramCallback.aspx&response_type=code&&scope=comments+likes+relationships";
                     Response.Redirect(authorizationUrl, false);
                     return;
                 }
@@ -44,15 +44,17 @@ namespace SocialPanel.User
 
 
                     string postdata = "client_id=" + ConfigurationManager.AppSettings["client_id"] + "&client_secret=" + ConfigurationManager.AppSettings["client_Secret"] + "&grant_type=authorization_code&redirect_uri=" + RedirectUri + "&code=" + code;
+                    //string postdata = "client_id=01be309e0c894bd0a169087bc6bd011c&client_secret=01522130ffb349af8eba0ed9f1b75af3&grant_type=authorization_code&redirect_uri=http://localhost:10477/User/InstagramCallback.aspx&code=" + code;
                     //string retunData = objoAuthTwitter.oAuthWebRequest(oAuthTwitter.Method.POST, "https://api.instagram.com/oauth/access_token", postdata);
                     //string retunData = objHttpCalls.Httpwebrequests("https://api.instagram.com/oauth/access_token?" + postdata, "POST");
                     string retunData = objSoftBucketHttpUtility.PostDataToWeb(new Uri("https://api.instagram.com/oauth/access_token"), postdata, "", "");
                     IGProfile objIGProfile = objJsonParser.GetIGuserProfileDetails(retunData);
-                    if (objaccesstoken.CheckUserExist(objIGProfile.UserId))
+                    bool IsExists = objaccesstoken.CheckUserExist(objIGProfile.UserId);
+                    if (IsExists)
                     {
                         //Update User
                         objaccesstoken.Updatecheckid(objIGProfile.AccessToken, objIGProfile.UserName);
-                        Response.Redirect("http://welikeu.com/user/profile.php",false);
+                        Response.Redirect("http://welikeu.com/user/profile.php?id=" + objIGProfile.UserId, false);
                     }
                     else
                     {
@@ -63,34 +65,34 @@ namespace SocialPanel.User
                         int endpoint = 0;
                         string url = string.Empty;
 
-                        try
-                        {
+                        //try
+                        //{
 
-                            url = "https://instagram.com/" + objIGProfile.UserName;
+                        //    url = "https://instagram.com/" + objIGProfile.UserName;
 
-                            startpoint = InstagramDetails.GetNumberOfFollow(url);
+                        //    startpoint = InstagramDetails.GetNumberOfFollow(url);
 
-                            endpoint = startpoint + 10;
+                        //    endpoint = startpoint + 10;
 
-                            orderRepo.AddOrder(OrderNumber, url, 10,
-                                                DateTime.Now, startpoint, endpoint, 0, "Pending", DateTime.Now, "Follow", objIGProfile.UserName);
+                        //  //  orderRepo.AddOrder(OrderNumber, url, 10,
+                        //                        DateTime.Now, startpoint, endpoint, 0, "Pending", DateTime.Now, "Follow", objIGProfile.UserName);
 
-                        }
-                        catch (Exception ex)
-                        {
+                        //}
+                        //catch (Exception ex)
+                        //{
 
-                        }
+                        //}
 
-                        Response.Redirect("http://welikeu.com/user/profile.php",false);
+                        Response.Redirect("http://welikeu.com/user/profile.php?id=" + objIGProfile.UserId, false);
                     }
                 }
 
 
 
-            }
-            catch (Exception ex)
-            {
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
 
         }
     }

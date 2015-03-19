@@ -42,14 +42,14 @@ namespace SocialPanel.Model
 
         public bool CheckUserExist(string userid)
         {
-          return  Dbcotext.tblAccesstokens.Where(e => e.UserID == userid).Any();
+          return  Dbcotext.tblAccesstokens.Any(e => e.UserID == userid);
         }
 
         public void Updatecheckid(string accesstoken, string username)
         {
             {
-                tblAccesstoken token = Dbcotext.tblAccesstokens.First(O => O.AccessToken == accesstoken && O.UserName == username);
-                token.UserName = username;
+                tblAccesstoken token = Dbcotext.tblAccesstokens.FirstOrDefault(O =>O.UserName == username);
+                //token.UserName = username;
                 token.AccessToken = accesstoken;
                 token.DateTime = DateTime.Now.ToString();
                 Dbcotext.SubmitChanges();

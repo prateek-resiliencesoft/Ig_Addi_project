@@ -53,10 +53,10 @@ namespace SocialPanel
             {
 
 
-                if (Request.Form != null)
+                if (Request.QueryString["customer"] != null)
                 {
-                    string customer = Request.Form["customer"];
-
+                    string customer = Request.QueryString["customer"];
+                   // string customer = "cus_5t6rQU83A8Qlec";
 
                     if (!string.IsNullOrEmpty(customer))
                     {
@@ -64,32 +64,31 @@ namespace SocialPanel
                         {
                             SoftBucketHttpUtility httpHelper = new SoftBucketHttpUtility();
 
-                            string SubscriptionId = "";
+                            string SubscriptionId = objCutomerDetailRepository.GetSubscription(customer);
                             string mediaUrl = "https://api.stripe.com/v1/customers/" + customer + "/subscriptions/" + SubscriptionId;
+
                             //string postData = "card[number]=" + card + "&card[exp_month]=" + month + "&card[exp_year]=" + year + "&card[cvc]=" + cvc + "&plan=" + plan;
-                            //string MediaPageSource = httpHelper.PostDataToWeb(new Uri(mediaUrl), postData, string.Empty, string.Empty);
+                            string MediaPageSource = httpHelper.PostDataToCancel(new Uri(mediaUrl), string.Empty, string.Empty, string.Empty);
+                            CancelSubscription cancelSubscription = JsonParser.CancelSubscriptionDetails(MediaPageSource);
 
-                            //SubscriptionDetails subscriptionDetails = JsonParser.GetSubscriptionDetails(MediaPageSource);
-
-                            ////Insertt Query
-                            //if (!objCutomerDetailRepository.CheckInstagramScreenNameExist(instagramuser) && subscriptionDetails != null) //Check Ig user exist or not
-                            //{
-                            //    objCutomerDetailRepository.AddCutomerDetails(subscriptionDetails.sources.data[0].customer, instagramuser, plan);
-
-                            //}
-                            //else
-                            //{
-                            //    objCutomerDetailRepository.UpdateCutomerDetails(instagramuser, plan, subscriptionDetails.sources.data[0].customer);
-                            //}
+                            if (cancelSubscription.status=="canceled")
+                            {
+                                objCutomerDetailRepository.UpdateStatus(cancelSubscription.customer, "false");
+                                Response.Redirect("http://welikeu.com/user/profile.php?cancel=true", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("http://welikeu.com/user/profile.php?cancel=false", false);
+                            }
 
                             //MSG.Type = "success";
-                            //MSG.Message = subscriptionDetails.sources.data[0].customer;
-
+                            //MSG.Message = "subcription cancelled";
                         }
                         catch (Exception ex)
                         {
-                            MSG.Type = "failed";
-                            MSG.Message = ex.Message;
+                            Response.Redirect("http://welikeu.com/user/profile.php?cancel=error", false);
+                            //MSG.Type = "failed";
+                            //MSG.Message = ex.Message;
                         }
 
                     }

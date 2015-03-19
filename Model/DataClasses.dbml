@@ -41,6 +41,7 @@
       <Column Name="Planid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="OrderDate" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="subscriptionid" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

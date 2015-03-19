@@ -1146,6 +1146,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\CancelSubscription.cs" />
+    <Compile Include="Helper\FacebookDetails.cs" />
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\HttpCalls.cs" />
     <Compile Include="Helper\InstagramDetails.cs" />

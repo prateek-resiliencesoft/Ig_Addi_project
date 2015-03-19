@@ -86,13 +86,19 @@ namespace SocialPanel.Admin
                     {
                         int startpoint = 0;
                         int endpoint = 0;
-                        string url = string.Empty;
+                        string url = item;
                         
                         try
                         {
-                            if (!item.Contains("http://instagram.com/"))
+
+                            if (url.Contains("http:"))
                             {
-                                url = "http://instagram.com/" + item;
+                                url = item.Replace("http:", "https:");
+                            }
+
+                            if (!url.Contains("https:"))
+                            {
+                                url = "https://instagram.com/" + item;
                             }
 
                             startpoint = InstagramDetails.GetNumberOfFollow(url);
